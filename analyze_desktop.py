@@ -49,6 +49,8 @@ def plot_articles_and_text(path, dataset,  data):
 
     fig, ax = plt.subplots()
     ax.set_title(dataset.upper() + " - Articles & Text")
+    ax.set_xlabel("Cores")
+    ax.set_ylabel("Milliseconds")
 
     ax.plot(x, y_articles, '-o', label='Article')
     ax.plot(x, y_text, '-o', label='Text')
@@ -69,6 +71,7 @@ def plot_application_speedup(path, dataset, data):
 
     fig, ax = plt.subplots()
     ax.set_title(dataset.upper() + " - Application Speedup")
+    ax.set_xlabel("Cores")
 
     if not os.path.exists("desktop/graphs"):
         os.mkdir("desktop/graphs")
@@ -94,6 +97,7 @@ def plot_computational_speedup(path, dataset,  data):
 
     fig, ax = plt.subplots()
     ax.set_title(dataset.upper() + " - Computational Speedup")
+    ax.set_xlabel("Cores")
 
     ax.plot(x, y_articles, '-o', label='Article')
     ax.plot(x, y_text, '-o', label='Text')
@@ -116,6 +120,7 @@ def plot_efficiency(path, dataset, data):
 
     fig, ax = plt.subplots()
     ax.set_title(dataset.upper() + " - Efficiency")
+    ax.set_xlabel("Cores")
 
     ax.plot(x, y_articles, '-o', label='Article')
     ax.plot(x, y_text, '-o', label='Text')
@@ -133,7 +138,8 @@ def plot_runtime_text_cutoffs(path, dataset, data):
                       data["TEXT_5000_12"]["scaled"]["mean"]]
 
     fig, ax = plt.subplots()
-    ax.set_title(dataset.upper() + " - Text Cutoffs")
+    ax.set_title(dataset.upper() + " - Text Cutoffs - 12")
+    ax.set_xlabel("Characters Sequential")
 
     ax.plot(x, y_text_runtime, '-o', label='Runtime')
 
@@ -152,7 +158,8 @@ def plot_application_speedup_text_cutoffs(path, dataset, data):
                                   data["TEXT_5000_12"]["scaled"]["application_speedup"]]
 
     fig, ax = plt.subplots()
-    ax.set_title(dataset.upper() + " - Text Cutoffs")
+    ax.set_title(dataset.upper() + " - Text Cutoffs - 12")
+    ax.set_xlabel("Characters Sequential")
 
     ax.plot(x, y_text_application_speedup, '-o', label='Application Speedup')
     # ax.plot(x, y_text_efficiency, '-o', label='Efficiency Speedup')
@@ -172,7 +179,8 @@ def plot_computational_speedup_text_cutoffs(path, dataset, data):
                                     data["TEXT_5000_12"]["scaled"]["computational_speedup"]]
 
     fig, ax = plt.subplots()
-    ax.set_title(dataset.upper() + " - Text Cutoffs")
+    ax.set_title(dataset.upper() + " - Text Cutoffs - 12")
+    ax.set_xlabel("Characters Sequential")
 
     ax.plot(x, y_text_computational_speedup, '-o', label='Computational Speedup')
 
@@ -191,7 +199,8 @@ def plot_efficiency_speedup_text_cutoffs(path, dataset, data):
                          data["TEXT_5000_12"]["scaled"]["efficiency"]]
 
     fig, ax = plt.subplots()
-    ax.set_title(dataset.upper() + " - Text Cutoffs")
+    ax.set_title(dataset.upper() + " - Text Cutoffs - 12")
+    ax.set_xlabel("Characters Sequential")
 
     ax.plot(x, y_text_efficiency, '-o', label='Efficiency Speedup')
 
@@ -208,7 +217,8 @@ def plot_runtime_article_cutoffs(path, dataset, data):
                       data["ARTICLE_5000_12"]["scaled"]["mean"]]
 
     fig, ax = plt.subplots()
-    ax.set_title(dataset.upper() + " - Article Cutoffs")
+    ax.set_title(dataset.upper() + " - Article Cutoffs - 12")
+    ax.set_xlabel("Articles Sequential")
 
     ax.plot(x, y_text_runtime, '-o', label='Runtime')
 
@@ -227,7 +237,8 @@ def plot_application_speedup_article_cutoffs(path, dataset, data):
                                   data["ARTICLE_5000_12"]["scaled"]["application_speedup"]]
 
     fig, ax = plt.subplots()
-    ax.set_title(dataset.upper() + " - Article Cutoffs")
+    ax.set_title(dataset.upper() + " - Article Cutoffs - 12")
+    ax.set_xlabel("Articles Sequential")
 
     ax.plot(x, y_text_application_speedup, '-o', label='Application Speedup')
     # ax.plot(x, y_text_efficiency, '-o', label='Efficiency Speedup')
@@ -247,7 +258,8 @@ def plot_computational_speedup_article_cutoffs(path, dataset, data):
                                     data["ARTICLE_5000_12"]["scaled"]["computational_speedup"]]
 
     fig, ax = plt.subplots()
-    ax.set_title(dataset.upper() + " - Article Cutoffs")
+    ax.set_title(dataset.upper() + " - Article Cutoffs - 12")
+    ax.set_xlabel("Articles Sequential")
 
     ax.plot(x, y_text_computational_speedup, '-o', label='Computational Speedup')
 
@@ -266,7 +278,8 @@ def plot_efficiency_speedup_article_cutoffs(path, dataset, data):
                          data["ARTICLE_5000_12"]["scaled"]["efficiency"]]
 
     fig, ax = plt.subplots()
-    ax.set_title(dataset.upper() + " - Article Cutoffs")
+    ax.set_title(dataset.upper() + " - Article Cutoffs - 12")
+    ax.set_xlabel("Articles Sequential")
 
     ax.plot(x, y_text_efficiency, '-o', label='Efficiency Speedup')
 
