@@ -16,7 +16,7 @@ def plot_articles(data):
     if not os.path.exists("desktop/graphs"):
         os.mkdir("desktop/graphs")
 
-    fig.savefig('desktop/graphs/articles.pdf')
+    fig.savefig('desktop/graphs/articles.svg')
 
     plt.show()
 
@@ -35,7 +35,7 @@ def plot_text(data):
     if not os.path.exists("desktop/graphs"):
         os.mkdir("desktop/graphs")
 
-    fig.savefig('desktop/graphs/text.pdf')
+    fig.savefig('desktop/graphs/text.svg')
 
     plt.show()
 
@@ -57,7 +57,7 @@ def plot_articles_and_text(path, dataset,  data):
 
     ax.legend(loc='upper right')
 
-    fig.savefig(path + '/article_and_text.pdf')
+    fig.savefig(path + '/article_and_text.svg')
 
     plt.show()
 
@@ -81,7 +81,7 @@ def plot_application_speedup(path, dataset, data):
 
     ax.legend(loc='upper right')
 
-    fig.savefig(path + '/application_speedup.pdf')
+    fig.savefig(path + '/application_speedup.svg')
 
     plt.show()
 
@@ -104,7 +104,7 @@ def plot_computational_speedup(path, dataset,  data):
 
     ax.legend(loc='upper right')
 
-    fig.savefig(path + '/computational_speedup.pdf')
+    fig.savefig(path + '/computational_speedup.svg')
 
     plt.show()
 
@@ -127,7 +127,7 @@ def plot_efficiency(path, dataset, data):
 
     ax.legend(loc='upper right')
 
-    fig.savefig(path + '/efficiency.pdf')
+    fig.savefig(path + '/efficiency.svg')
 
     plt.show()
 
@@ -145,7 +145,7 @@ def plot_runtime_text_cutoffs(path, dataset, data):
 
     ax.legend(loc='upper right')
 
-    fig.savefig(path + '/text_cutoffs_runtime.pdf')
+    fig.savefig(path + '/text_cutoffs_runtime.svg')
 
     plt.show()
 
@@ -166,7 +166,7 @@ def plot_application_speedup_text_cutoffs(path, dataset, data):
 
     ax.legend(loc='upper right')
 
-    fig.savefig(path + '/text_cutoffs_speedup.pdf')
+    fig.savefig(path + '/text_cutoffs_speedup.svg')
 
     plt.show()
 
@@ -186,7 +186,7 @@ def plot_computational_speedup_text_cutoffs(path, dataset, data):
 
     ax.legend(loc='upper right')
 
-    fig.savefig(path + '/text_cutoffs_comp.pdf')
+    fig.savefig(path + '/text_cutoffs_comp.svg')
 
     plt.show()
 
@@ -206,7 +206,7 @@ def plot_efficiency_speedup_text_cutoffs(path, dataset, data):
 
     ax.legend(loc='upper right')
 
-    fig.savefig(path + '/text_cutoffs_efficiency.pdf')
+    fig.savefig(path + '/text_cutoffs_efficiency.svg')
 
     plt.show()
 
@@ -224,7 +224,7 @@ def plot_runtime_article_cutoffs(path, dataset, data):
 
     ax.legend(loc='upper right')
 
-    fig.savefig(path + '/article_cutoffs_runtime.pdf')
+    fig.savefig(path + '/article_cutoffs_runtime.svg')
 
     plt.show()
 
@@ -245,7 +245,7 @@ def plot_application_speedup_article_cutoffs(path, dataset, data):
 
     ax.legend(loc='upper right')
 
-    fig.savefig(path + '/article_cutoffs_speedup.pdf')
+    fig.savefig(path + '/article_cutoffs_speedup.svg')
 
     plt.show()
 
@@ -265,7 +265,7 @@ def plot_computational_speedup_article_cutoffs(path, dataset, data):
 
     ax.legend(loc='upper right')
 
-    fig.savefig(path + '/article_cutoffs_comp.pdf')
+    fig.savefig(path + '/article_cutoffs_comp.svg')
 
     plt.show()
 
@@ -285,6 +285,6 @@ def plot_efficiency_speedup_article_cutoffs(path, dataset, data):
 
     ax.legend(loc='upper right')
 
-    fig.savefig(path + '/article_cutoffs_efficiency.pdf')
+    fig.savefig(path + '/article_cutoffs_efficiency.svg')
 
     plt.show()
