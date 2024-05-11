@@ -26,6 +26,9 @@ def analyse_all_around(dataset, data):
     mean = get_mean(data)
     scaled = scale_data(mean)
 
+    overhead_data = overhead(data)
+    plot_overhead(path, dataset, overhead_data)
+
     plot_articles_and_text(path, dataset, scaled)
 
     # Application Speedup
@@ -67,11 +70,15 @@ def analyze_128(dataset, data):
     text_keys = ['TEXT100_128', 'TEXT250_128', 'TEXT500_128', 'TEXT750_128', 'TEXT1000_128', 'TEXT2500_128', 'TEXT5000_128']
 
     plot_runtime_text_cutoffs(path, dataset, data, text_cutoffs, text_keys, workers)
+    plot_computational_speedup_text_cutoffs(path, dataset, data, text_cutoffs, text_keys, workers)
+    plot_application_speedup_text_cutoffs(path, dataset, data, text_cutoffs, text_keys, workers)
 
     article_cutoffs = [250, 500, 750, 1000, 2500, 5000]
     article_keys = ['ARTICLE_250_128', 'ARTICLE_500_128', 'ARTICLE_750_128', 'ARTICLE_1000_128', 'ARTICLE_2500_128', 'ARTICLE_5000_128' ]
 
     plot_runtime_article_cutoffs(path, dataset, data, article_cutoffs, article_keys, workers)
+    plot_computational_speedup_article_cutoffs(path, dataset, data, article_cutoffs, article_keys, workers)
+    plot_application_speedup_article_cutoffs(path, dataset, data, article_cutoffs, article_keys, workers)
 
 
 def analyze_64(dataset, data):
@@ -148,7 +155,7 @@ if __name__ == '__main__':
     if not os.path.exists(path):
         os.mkdir(path)
 
-    analyse_all_around("firefly", data_all_around)
+    # analyse_all_around("firefly", data_all_around)
 
     # 128 Workers
     data_128['SEQ'] = data_all_around['SEQ']
@@ -157,16 +164,16 @@ if __name__ == '__main__':
 
     analyze_128("firefly", data_128)
 
-    # 64 Workers
-    data_64['SEQ'] = data_all_around['SEQ']
-    data_64['TEXT1'] = data_all_around['TEXT1']
-    data_64['ARTICLE1'] = data_all_around['ARTICLE1']
-
-    analyze_64("firefly", data_64)
-
-    # 32 Workers
-    data_32['SEQ'] = data_all_around['SEQ']
-    data_32['TEXT1'] = data_all_around['TEXT1']
-    data_32['ARTICLE1'] = data_all_around['ARTICLE1']
-
-    analyze_32("firefly", data_32)
+    # # 64 Workers
+    # data_64['SEQ'] = data_all_around['SEQ']
+    # data_64['TEXT1'] = data_all_around['TEXT1']
+    # data_64['ARTICLE1'] = data_all_around['ARTICLE1']
+    #
+    # analyze_64("firefly", data_64)
+    #
+    # # 32 Workers
+    # data_32['SEQ'] = data_all_around['SEQ']
+    # data_32['TEXT1'] = data_all_around['TEXT1']
+    # data_32['ARTICLE1'] = data_all_around['ARTICLE1']
+    #
+    # analyze_32("firefly", data_32)

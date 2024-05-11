@@ -3,6 +3,14 @@ import os
 import matplotlib.pyplot as plt
 
 
+def plot_overhead(path, dataset, data):
+    x = []
+    x = [data["TEXT1"]['scaled']['overhead'], data["ARTICLE1"]['scaled']['overhead']]
+
+    print("Text: " + str(data["TEXT1"]['scaled']['overhead']))
+    print("ARTICLE1: " + str(data["ARTICLE1"]["scaled"]["overhead"]))
+
+
 def plot_articles_and_text(path, dataset, data):
     x = [1, 16, 32, 64, 128]  # cores
     y_articles = [data["ARTICLE1"]["scaled"]["mean"], data["ARTICLE16"]["scaled"]["mean"],
@@ -262,3 +270,80 @@ def plot_runtime_article_cutoffs(path, dataset, data, cutoffs, keys, workers):
 #     fig.savefig(path + '/article_cutoffs_efficiency.svg')
 #
 #     plt.show()
+
+
+def plot_computational_speedup_article_cutoffs(path, dataset, data, cutoffs, keys, workers):
+    x = cutoffs
+    y_text_runtime = []
+    for key in keys:
+        y_text_runtime.append(data[key]["scaled"]["computational_speedup"])
+
+    fig, ax = plt.subplots()
+    ax.set_title(dataset.upper() + " - Article Cutoffs - " + str(workers))
+    ax.set_xlabel("Articles Sequential")
+
+    ax.plot(x, y_text_runtime, '-o', label='Computational')
+
+    ax.legend(loc='upper right')
+
+    fig.savefig(path + '/article_cutoffs_computational_speedup.svg')
+
+    plt.show()
+
+
+def plot_application_speedup_article_cutoffs(path, dataset, data, cutoffs, keys, workers):
+    x = cutoffs
+    y_text_runtime = []
+    for key in keys:
+        y_text_runtime.append(data[key]["scaled"]["application_speedup"])
+
+    fig, ax = plt.subplots()
+    ax.set_title(dataset.upper() + " - Article Cutoffs - " + str(workers))
+    ax.set_xlabel("Articles Sequential")
+
+    ax.plot(x, y_text_runtime, '-o', label='Application')
+
+    ax.legend(loc='upper right')
+
+    fig.savefig(path + '/article_cutoffs_application_speedup.svg')
+
+    plt.show()
+
+
+def plot_computational_speedup_text_cutoffs(path, dataset, data, cutoffs, keys, workers):
+    x = cutoffs
+
+    y_text_runtime = []
+    for key in keys:
+        y_text_runtime.append(data[key]["scaled"]["computational_speedup"])
+
+    fig, ax = plt.subplots()
+    ax.set_title(dataset.upper() + " - Text Cutoffs - " + str(workers))
+    ax.set_xlabel("Characters Sequential")
+
+    ax.plot(x, y_text_runtime, '-o', label='Computational')
+
+    ax.legend(loc='upper right')
+
+    fig.savefig(path + '/text_cutoffs_computational_speedup.svg')
+
+    plt.show()
+
+
+def plot_application_speedup_text_cutoffs(path, dataset, data, cutoffs, keys, workers):
+    x = cutoffs
+    y_text_runtime = []
+    for key in keys:
+        y_text_runtime.append(data[key]["scaled"]["application_speedup"])
+
+    fig, ax = plt.subplots()
+    ax.set_title(dataset.upper() + " - Text Cutoffs - " + str(workers))
+    ax.set_xlabel("Characters Sequential")
+
+    ax.plot(x, y_text_runtime, '-o', label='Application')
+
+    ax.legend(loc='upper right')
+
+    fig.savefig(path + '/text_cutoffs_application_speedup.svg')
+
+    plt.show()
