@@ -107,11 +107,15 @@ def analyze_64(dataset, data):
     text_keys = ['TEXT100_64', 'TEXT250_64', 'TEXT500_64', 'TEXT750_64', 'TEXT1000_64', 'TEXT2500_64', 'TEXT5000_64']
 
     plot_runtime_text_cutoffs(path, dataset, data, text_cutoffs, text_keys, workers)
+    plot_computational_speedup_text_cutoffs(path, dataset, data, text_cutoffs, text_keys, workers)
+    plot_application_speedup_text_cutoffs(path, dataset, data, text_cutoffs, text_keys, workers)
 
     article_cutoffs = [250, 500, 750, 1000, 2500, 5000]
     article_keys = ['ARTICLE_250_64', 'ARTICLE_500_64', 'ARTICLE_750_64', 'ARTICLE_1000_64', 'ARTICLE_2500_64', 'ARTICLE_5000_64' ]
 
     plot_runtime_article_cutoffs(path, dataset, data, article_cutoffs, article_keys, workers)
+    plot_computational_speedup_article_cutoffs(path, dataset, data, article_cutoffs, article_keys, workers)
+    plot_application_speedup_article_cutoffs(path, dataset, data, article_cutoffs, article_keys, workers)
 
 
 def analyze_32(dataset, data):
@@ -140,11 +144,15 @@ def analyze_32(dataset, data):
     text_keys = ['TEXT100_32', 'TEXT250_32', 'TEXT500_32', 'TEXT750_32', 'TEXT1000_32', 'TEXT2500_32', 'TEXT5000_32']
 
     plot_runtime_text_cutoffs(path, dataset, data, text_cutoffs, text_keys, workers)
+    plot_computational_speedup_text_cutoffs(path, dataset, data, text_cutoffs, text_keys, workers)
+    plot_application_speedup_text_cutoffs(path, dataset, data, text_cutoffs, text_keys, workers)
 
     article_cutoffs = [250, 500, 750, 1000, 2500, 5000]
     article_keys = ['ARTICLE_250_32', 'ARTICLE_500_32', 'ARTICLE_750_32', 'ARTICLE_1000_32', 'ARTICLE_2500_32', 'ARTICLE_5000_32' ]
 
     plot_runtime_article_cutoffs(path, dataset, data, article_cutoffs, article_keys, workers)
+    plot_computational_speedup_article_cutoffs(path, dataset, data, article_cutoffs, article_keys, workers)
+    plot_application_speedup_article_cutoffs(path, dataset, data, article_cutoffs, article_keys, workers)
 
 
 if __name__ == '__main__':
@@ -157,12 +165,12 @@ if __name__ == '__main__':
 
     # analyse_all_around("firefly", data_all_around)
 
-    # 128 Workers
-    data_128['SEQ'] = data_all_around['SEQ']
-    data_128['TEXT1'] = data_all_around['TEXT1']
-    data_128['ARTICLE1'] = data_all_around['ARTICLE1']
-
-    analyze_128("firefly", data_128)
+    # # 128 Workers
+    # data_128['SEQ'] = data_all_around['SEQ']
+    # data_128['TEXT1'] = data_all_around['TEXT1']
+    # data_128['ARTICLE1'] = data_all_around['ARTICLE1']
+    #
+    # analyze_128("firefly", data_128)
 
     # # 64 Workers
     # data_64['SEQ'] = data_all_around['SEQ']
@@ -170,10 +178,10 @@ if __name__ == '__main__':
     # data_64['ARTICLE1'] = data_all_around['ARTICLE1']
     #
     # analyze_64("firefly", data_64)
-    #
-    # # 32 Workers
-    # data_32['SEQ'] = data_all_around['SEQ']
-    # data_32['TEXT1'] = data_all_around['TEXT1']
-    # data_32['ARTICLE1'] = data_all_around['ARTICLE1']
-    #
-    # analyze_32("firefly", data_32)
+
+    # 32 Workers
+    data_32['SEQ'] = data_all_around['SEQ']
+    data_32['TEXT1'] = data_all_around['TEXT1']
+    data_32['ARTICLE1'] = data_all_around['ARTICLE1']
+
+    analyze_32("firefly", data_32)
