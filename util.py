@@ -1,36 +1,93 @@
+import logging
+
 import numpy as np
+from scipy.stats import t
 
+divide = 1000000  # to milliseconds
 
-divide = 1000000  # naar seconden
+confidence_level = 0.95
+alpha = 1 - confidence_level
+
+util_logger = logging.getLogger('util')
+util_logger.setLevel(logging.INFO)
 
 
 def scale_data(data):
     for value in data:
-        data[value]['scaled']['mean'] = data[value]['original']['mean'] / divide  # discard the first 5 values
+        value_data = data[value]['original']['values'][4:]  # discard the first 5 values
+        mean = data[value]['original']['mean'] / divide
+        std = data[value]['original']['std'] / divide
+        min_value = data[value]['original']['min'] / divide
+        max_value = data[value]['original']['max'] / divide
+        margin_of_error = data[value]['original']['margin_of_error'] / divide
+        lower_bound = data[value]['original']['lower_bound'] / divide
+        upper_bound = data[value]['original']['upper_bound'] / divide
+
+        data[value]['scaled']['mean'] = mean
+        data[value]['scaled']['std'] = std
+        data[value]['scaled']['min'] = min_value
+        data[value]['scaled']['max'] = max_value
+        data[value]['scaled']['margin_of_error'] = margin_of_error
+        data[value]['scaled']['lower_bound'] = lower_bound
+        data[value]['scaled']['upper_bound'] = upper_bound
+
+        # n = len(value_data)
+        # df = n - 1
+        # t_critical = t.ppf(1 - alpha / 2, df)
+        # margin_of_error = t_critical * (std / np.sqrt(n))
+
+        # print("=== Dataset Parameters ===")
+        # print("Dataset parameters: " + str(value))
+        # print("Confidence level: " + str(alpha))
+        # print("Margin of error: {}".format(margin_of_error))
+        # print("lower_bound: {}, upper_bound: {}".format(lower_bound, upper_bound))
+        # print("======== End of Dataset Parameters ======")
+
     return data
 
 
-def get_mean(data):
+def get_dataset_parameters(data):
     for value in data:
-        data[value]['original']['mean'] = np.mean(data[value]['original']['values'][4:])  # discard the first 5 values
+        value_data = data[value]['original']['values'][4:]  # discard the first 5 values
+        mean = np.mean(value_data)
+        min_value = np.min(value_data)
+        max_value = np.max(value_data)
+        std = np.std(value_data)
+
+        n = len(value_data)
+        df = n - 1
+
+        t_critical = t.ppf(1 - alpha / 2, df)
+        margin_of_error = t_critical * (std / np.sqrt(n))
+        lower_bound = mean - margin_of_error
+        upper_bound = mean + margin_of_error
+        
+        data[value]['original']['mean'] = mean
+        data[value]['original']['min'] = min_value
+        data[value]['original']['max'] = max_value
+        data[value]['original']['std'] = std
+        data[value]['original']['margin_of_error'] = margin_of_error
+        data[value]['original']['lower_bound'] = lower_bound
+        data[value]['original']['upper_bound'] = upper_bound
+
     return data
 
 
 # Divide by the SEQ
 def overhead(data):
-    data["TEXT1"]["scaled"]["overhead"] = data["TEXT1"]["scaled"]["mean"] / data["SEQ"]["scaled"]["mean"]
-    data["ARTICLE1"]["scaled"]["overhead"] = data["ARTICLE1"]["scaled"]["mean"] / data["SEQ"]["scaled"]["mean"]
+    data["TEXT1"]["original"]["overhead"] = data["TEXT1"]["original"]["mean"] / data["SEQ"]["original"]["mean"]
+    data["ARTICLE1"]["original"]["overhead"] = data["ARTICLE1"]["original"]["mean"] / data["SEQ"]["original"]["mean"]
 
     return data
 
 
 # Divide any by the SEQ
 def application_speedup(data):
-    seq_mean = data["SEQ"]["scaled"]["mean"]
+    seq_mean = data["SEQ"]["original"]["mean"]
 
     for value in data:
         if value != 'SEQ':
-            data[value]['scaled']['application_speedup'] = seq_mean / data[value]['scaled']['mean']
+            data[value]["original"]['application_speedup'] = seq_mean / data[value]["original"]['mean']
 
     return data
 
@@ -45,7 +102,7 @@ def computational_speedup(data):
             elif "TEXT" in value:
                 to = "TEXT1"
 
-            data[value]['scaled']['computational_speedup'] = data[to]['scaled']['mean'] / data[value]['scaled']['mean']
+            data[value]["original"]['computational_speedup'] = data[to]["original"]['mean'] / data[value]["original"]['mean']
 
     return data
 
@@ -75,7 +132,7 @@ def efficiency(data):
             elif "128" in value:
                 workers = 128
 
-            data[value]['scaled']['efficiency'] = data[to]['scaled']['mean'] / (workers * data[value]['scaled']['mean'])
+            data[value]["original"]['efficiency'] = data[to]["original"]['mean'] / (workers * data[value]["original"]['mean'])
 
     return data
 
@@ -100,4 +157,3 @@ def read_from_file(filename):
         # data[split[0]]['original']['values'] = np.array(split[1:], dtype=float)
 
     return data
-

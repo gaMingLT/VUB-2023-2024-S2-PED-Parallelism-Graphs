@@ -1,11 +1,13 @@
 import os.path
 import matplotlib.pyplot as plt
 
+SOURCE = "scaled"
+
 
 def plot_articles(data):
     x = [1, 4, 8, 12]  # cores
-    y = [data["ARTICLE1"]["scaled"]["mean"], data["ARTICLE4"]["scaled"]["mean"], data["ARTICLE8"]["scaled"]["mean"],
-         data["ARTICLE12"]["scaled"]["mean"]]
+    y = [data["ARTICLE1"][SOURCE]["mean"], data["ARTICLE4"][SOURCE]["mean"], data["ARTICLE8"][SOURCE]["mean"],
+         data["ARTICLE12"][SOURCE]["mean"]]
 
     fig, ax = plt.subplots()
     ax.set_title("Article Statistics")
@@ -23,8 +25,8 @@ def plot_articles(data):
 
 def plot_text(data):
     x = [1, 4, 8, 12]  # cores
-    y = [data["TEXT1"]["scaled"]["mean"], data["TEXT4"]["scaled"]["mean"], data["TEXT8"]["scaled"]["mean"],
-         data["TEXT12"]["scaled"]["mean"]]
+    y = [data["TEXT1"][SOURCE]["mean"], data["TEXT4"][SOURCE]["mean"], data["TEXT8"][SOURCE]["mean"],
+         data["TEXT12"][SOURCE]["mean"]]
 
     fig, ax = plt.subplots()
     ax.set_title("Text Statistics")
@@ -42,10 +44,10 @@ def plot_text(data):
 
 def plot_articles_and_text(path, dataset,  data):
     x = [1, 4, 8, 12]  # cores
-    y_articles = [data["ARTICLE1"]["scaled"]["mean"], data["ARTICLE4"]["scaled"]["mean"],
-                  data["ARTICLE8"]["scaled"]["mean"], data["ARTICLE12"]["scaled"]["mean"]]
-    y_text = [data["TEXT1"]["scaled"]["mean"], data["TEXT4"]["scaled"]["mean"],
-              data["TEXT8"]["scaled"]["mean"], data["TEXT12"]["scaled"]["mean"]]
+    y_articles = [data["ARTICLE1"][SOURCE]["mean"], data["ARTICLE4"][SOURCE]["mean"],
+                  data["ARTICLE8"][SOURCE]["mean"], data["ARTICLE12"][SOURCE]["mean"]]
+    y_text = [data["TEXT1"][SOURCE]["mean"], data["TEXT4"][SOURCE]["mean"],
+              data["TEXT8"][SOURCE]["mean"], data["TEXT12"][SOURCE]["mean"]]
 
     fig, ax = plt.subplots()
     ax.set_title(dataset.upper() + " - Articles & Text")
@@ -64,10 +66,10 @@ def plot_articles_and_text(path, dataset,  data):
 
 def plot_application_speedup(path, dataset, data):
     x = [1, 4, 8, 12]  # cores
-    y_articles = [data["ARTICLE1"]["scaled"]["application_speedup"], data["ARTICLE4"]["scaled"]["application_speedup"],
-                  data["ARTICLE8"]["scaled"]["application_speedup"], data["ARTICLE12"]["scaled"]["application_speedup"]]
-    y_text = [data["TEXT1"]["scaled"]["application_speedup"], data["TEXT4"]["scaled"]["application_speedup"],
-              data["TEXT8"]["scaled"]["application_speedup"], data["TEXT12"]["scaled"]["application_speedup"]]
+    y_articles = [data["ARTICLE1"][SOURCE]["application_speedup"], data["ARTICLE4"][SOURCE]["application_speedup"],
+                  data["ARTICLE8"][SOURCE]["application_speedup"], data["ARTICLE12"][SOURCE]["application_speedup"]]
+    y_text = [data["TEXT1"][SOURCE]["application_speedup"], data["TEXT4"][SOURCE]["application_speedup"],
+              data["TEXT8"][SOURCE]["application_speedup"], data["TEXT12"][SOURCE]["application_speedup"]]
 
     fig, ax = plt.subplots()
     ax.set_title(dataset.upper() + " - Application Speedup")
@@ -88,12 +90,12 @@ def plot_application_speedup(path, dataset, data):
 
 def plot_computational_speedup(path, dataset,  data):
     x = [4, 8, 12]  # cores
-    y_articles = [data["ARTICLE4"]["scaled"]["computational_speedup"],
-                  data["ARTICLE8"]["scaled"]["computational_speedup"],
-                  data["ARTICLE12"]["scaled"]["computational_speedup"]]
-    y_text = [data["TEXT4"]["scaled"]["computational_speedup"],
-              data["TEXT8"]["scaled"]["computational_speedup"],
-              data["TEXT12"]["scaled"]["computational_speedup"]]
+    y_articles = [data["ARTICLE4"][SOURCE]["computational_speedup"],
+                  data["ARTICLE8"][SOURCE]["computational_speedup"],
+                  data["ARTICLE12"][SOURCE]["computational_speedup"]]
+    y_text = [data["TEXT4"][SOURCE]["computational_speedup"],
+              data["TEXT8"][SOURCE]["computational_speedup"],
+              data["TEXT12"][SOURCE]["computational_speedup"]]
 
     fig, ax = plt.subplots()
     ax.set_title(dataset.upper() + " - Computational Speedup")
@@ -111,12 +113,12 @@ def plot_computational_speedup(path, dataset,  data):
 
 def plot_efficiency(path, dataset, data):
     x = [4, 8, 12]  # cores
-    y_articles = [data["ARTICLE4"]["scaled"]["efficiency"],
-                  data["ARTICLE8"]["scaled"]["efficiency"],
-                  data["ARTICLE12"]["scaled"]["efficiency"]]
-    y_text = [data["TEXT4"]["scaled"]["efficiency"],
-              data["TEXT8"]["scaled"]["efficiency"],
-              data["TEXT12"]["scaled"]["efficiency"]]
+    y_articles = [data["ARTICLE4"][SOURCE]["efficiency"],
+                  data["ARTICLE8"][SOURCE]["efficiency"],
+                  data["ARTICLE12"][SOURCE]["efficiency"]]
+    y_text = [data["TEXT4"][SOURCE]["efficiency"],
+              data["TEXT8"][SOURCE]["efficiency"],
+              data["TEXT12"][SOURCE]["efficiency"]]
 
     fig, ax = plt.subplots()
     ax.set_title(dataset.upper() + " - Efficiency")
@@ -134,8 +136,8 @@ def plot_efficiency(path, dataset, data):
 
 def plot_runtime_text_cutoffs(path, dataset, data):
     x = [1000, 2500, 5000]  # cutoff
-    y_text_runtime = [data["TEXT_1000_12"]["scaled"]["mean"], data["TEXT_2500_12"]["scaled"]["mean"],
-                      data["TEXT_5000_12"]["scaled"]["mean"]]
+    y_text_runtime = [data["TEXT_1000_12"][SOURCE]["mean"], data["TEXT_2500_12"][SOURCE]["mean"],
+                      data["TEXT_5000_12"][SOURCE]["mean"]]
 
     fig, ax = plt.subplots()
     ax.set_title(dataset.upper() + " - Text Cutoffs - 12")
@@ -153,9 +155,9 @@ def plot_runtime_text_cutoffs(path, dataset, data):
 def plot_application_speedup_text_cutoffs(path, dataset, data):
     x = [1000, 2500, 5000]  # cutoff
 
-    y_text_application_speedup = [data["TEXT_1000_12"]["scaled"]["application_speedup"],
-                                  data["TEXT_2500_12"]["scaled"]["application_speedup"],
-                                  data["TEXT_5000_12"]["scaled"]["application_speedup"]]
+    y_text_application_speedup = [data["TEXT_1000_12"][SOURCE]["application_speedup"],
+                                  data["TEXT_2500_12"][SOURCE]["application_speedup"],
+                                  data["TEXT_5000_12"][SOURCE]["application_speedup"]]
 
     fig, ax = plt.subplots()
     ax.set_title(dataset.upper() + " - Text Cutoffs - 12")
@@ -174,9 +176,9 @@ def plot_application_speedup_text_cutoffs(path, dataset, data):
 def plot_computational_speedup_text_cutoffs(path, dataset, data):
     x = [1000, 2500, 5000]  # cutoff
 
-    y_text_computational_speedup = [data["TEXT_1000_12"]["scaled"]["computational_speedup"],
-                                    data["TEXT_2500_12"]["scaled"]["computational_speedup"],
-                                    data["TEXT_5000_12"]["scaled"]["computational_speedup"]]
+    y_text_computational_speedup = [data["TEXT_1000_12"][SOURCE]["computational_speedup"],
+                                    data["TEXT_2500_12"][SOURCE]["computational_speedup"],
+                                    data["TEXT_5000_12"][SOURCE]["computational_speedup"]]
 
     fig, ax = plt.subplots()
     ax.set_title(dataset.upper() + " - Text Cutoffs - 12")
@@ -194,9 +196,9 @@ def plot_computational_speedup_text_cutoffs(path, dataset, data):
 def plot_efficiency_speedup_text_cutoffs(path, dataset, data):
     x = [1000, 2500, 5000]  # cutoff
 
-    y_text_efficiency = [data["TEXT_1000_12"]["scaled"]["efficiency"],
-                         data["TEXT_2500_12"]["scaled"]["efficiency"],
-                         data["TEXT_5000_12"]["scaled"]["efficiency"]]
+    y_text_efficiency = [data["TEXT_1000_12"][SOURCE]["efficiency"],
+                         data["TEXT_2500_12"][SOURCE]["efficiency"],
+                         data["TEXT_5000_12"][SOURCE]["efficiency"]]
 
     fig, ax = plt.subplots()
     ax.set_title(dataset.upper() + " - Text Cutoffs - 12")
@@ -213,8 +215,8 @@ def plot_efficiency_speedup_text_cutoffs(path, dataset, data):
 
 def plot_runtime_article_cutoffs(path, dataset, data):
     x = [1000, 2500, 5000]  # cutoff
-    y_text_runtime = [data["ARTICLE_1000_12"]["scaled"]["mean"], data["ARTICLE_2500_12"]["scaled"]["mean"],
-                      data["ARTICLE_5000_12"]["scaled"]["mean"]]
+    y_text_runtime = [data["ARTICLE_1000_12"][SOURCE]["mean"], data["ARTICLE_2500_12"][SOURCE]["mean"],
+                      data["ARTICLE_5000_12"][SOURCE]["mean"]]
 
     fig, ax = plt.subplots()
     ax.set_title(dataset.upper() + " - Article Cutoffs - 12")
@@ -232,9 +234,9 @@ def plot_runtime_article_cutoffs(path, dataset, data):
 def plot_application_speedup_article_cutoffs(path, dataset, data):
     x = [1000, 2500, 5000]  # cutoff
 
-    y_text_application_speedup = [data["ARTICLE_1000_12"]["scaled"]["application_speedup"],
-                                  data["ARTICLE_2500_12"]["scaled"]["application_speedup"],
-                                  data["ARTICLE_5000_12"]["scaled"]["application_speedup"]]
+    y_text_application_speedup = [data["ARTICLE_1000_12"][SOURCE]["application_speedup"],
+                                  data["ARTICLE_2500_12"][SOURCE]["application_speedup"],
+                                  data["ARTICLE_5000_12"][SOURCE]["application_speedup"]]
 
     fig, ax = plt.subplots()
     ax.set_title(dataset.upper() + " - Article Cutoffs - 12")
@@ -253,9 +255,9 @@ def plot_application_speedup_article_cutoffs(path, dataset, data):
 def plot_computational_speedup_article_cutoffs(path, dataset, data):
     x = [1000, 2500, 5000]  # cutoff
 
-    y_text_computational_speedup = [data["ARTICLE_1000_12"]["scaled"]["computational_speedup"],
-                                    data["ARTICLE_2500_12"]["scaled"]["computational_speedup"],
-                                    data["ARTICLE_5000_12"]["scaled"]["computational_speedup"]]
+    y_text_computational_speedup = [data["ARTICLE_1000_12"][SOURCE]["computational_speedup"],
+                                    data["ARTICLE_2500_12"][SOURCE]["computational_speedup"],
+                                    data["ARTICLE_5000_12"][SOURCE]["computational_speedup"]]
 
     fig, ax = plt.subplots()
     ax.set_title(dataset.upper() + " - Article Cutoffs - 12")
@@ -273,9 +275,9 @@ def plot_computational_speedup_article_cutoffs(path, dataset, data):
 def plot_efficiency_speedup_article_cutoffs(path, dataset, data):
     x = [1000, 2500, 5000]  # cutoff
 
-    y_text_efficiency = [data["ARTICLE_1000_12"]["scaled"]["efficiency"],
-                         data["ARTICLE_2500_12"]["scaled"]["efficiency"],
-                         data["ARTICLE_5000_12"]["scaled"]["efficiency"]]
+    y_text_efficiency = [data["ARTICLE_1000_12"][SOURCE]["efficiency"],
+                         data["ARTICLE_2500_12"][SOURCE]["efficiency"],
+                         data["ARTICLE_5000_12"][SOURCE]["efficiency"]]
 
     fig, ax = plt.subplots()
     ax.set_title(dataset.upper() + " - Article Cutoffs - 12")
