@@ -165,12 +165,12 @@ if __name__ == '__main__':
 
     analyse_all_around("firefly", data_all_around)
 
-    # 128 Workers
-    data_128['SEQ'] = data_all_around['SEQ']
-    data_128['TEXT1'] = data_all_around['TEXT1']
-    data_128['ARTICLE1'] = data_all_around['ARTICLE1']
-
-    analyze_128("firefly", data_128)
+    # # 128 Workers
+    # data_128['SEQ'] = data_all_around['SEQ']
+    # data_128['TEXT1'] = data_all_around['TEXT1']
+    # data_128['ARTICLE1'] = data_all_around['ARTICLE1']
+    #
+    # analyze_128("firefly", data_128)
 
     # # 64 Workers
     # data_64['SEQ'] = data_all_around['SEQ']

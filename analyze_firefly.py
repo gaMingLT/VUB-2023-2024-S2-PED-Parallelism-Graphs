@@ -13,6 +13,7 @@ def print_overhead(path, dataset, data):
 
 def plot_articles_and_text(path, dataset, data):
     x = [1, 16, 32, 64, 128]  # cores
+    SOURCE = 'scaled'
     y_articles = [data["ARTICLE1"][SOURCE]["mean"], data["ARTICLE16"][SOURCE]["mean"],
                   data["ARTICLE32"][SOURCE]["mean"], data["ARTICLE64"][SOURCE]["mean"],
                   data["ARTICLE128"][SOURCE]["mean"]]
@@ -28,7 +29,7 @@ def plot_articles_and_text(path, dataset, data):
     ax.plot(x, y_articles, '-o', label='Article')
     ax.plot(x, y_text, '-o', label='Text')
 
-    ax.legend(loc='upper left')
+    ax.legend(loc='upper right')
 
     fig.savefig(path + '/article_and_text.svg')
 
@@ -114,6 +115,8 @@ def plot_efficiency(path, dataset, data):
 def plot_runtime_text_cutoffs(path, dataset, data, cutoffs, keys, workers):
     x = cutoffs
 
+    SOURCE = "scaled"
+
     y_text_runtime = []
     for key in keys:
         y_text_runtime.append(data[key][SOURCE]["mean"])
@@ -194,6 +197,9 @@ def plot_runtime_text_cutoffs(path, dataset, data, cutoffs, keys, workers):
 #
 def plot_runtime_article_cutoffs(path, dataset, data, cutoffs, keys, workers):
     x = cutoffs
+
+    SOURCE = "scaled"
+
     y_text_runtime = []
     for key in keys:
         y_text_runtime.append(data[key][SOURCE]["mean"])
