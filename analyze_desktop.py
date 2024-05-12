@@ -2,6 +2,11 @@ import os.path
 import matplotlib.pyplot as plt
 
 
+def plot_overhead(path, dataset, data):
+    print("Text: " + str(data["TEXT1"]['scaled']['overhead']))
+    print("ARTICLE1: " + str(data["ARTICLE1"]["scaled"]["overhead"]))
+
+
 def plot_articles(data):
     x = [1, 4, 8, 12]  # cores
     y = [data["ARTICLE1"]["scaled"]["mean"], data["ARTICLE4"]["scaled"]["mean"], data["ARTICLE8"]["scaled"]["mean"],
