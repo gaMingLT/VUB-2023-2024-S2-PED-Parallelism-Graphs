@@ -2,13 +2,13 @@ import os
 
 import matplotlib.pyplot as plt
 
-SOURCE = "scaled"
+SOURCE = "original"
 
 
 def print_overhead(path, dataset, data):
     print("Overhead {}".format(dataset))
-    print("Text: " + str(data["TEXT1"][SOURCE]['overhead']))
-    print("ARTICLE1: " + str(data["ARTICLE1"][SOURCE]["overhead"]))
+    print("Text: " + str(data["TEXT1"]["original"]['overhead']))
+    print("ARTICLE1: " + str(data["ARTICLE1"]["original"]["overhead"]))
 
 
 def plot_articles_and_text(path, dataset, data):
@@ -28,7 +28,7 @@ def plot_articles_and_text(path, dataset, data):
     ax.plot(x, y_articles, '-o', label='Article')
     ax.plot(x, y_text, '-o', label='Text')
 
-    ax.legend(loc='upper right')
+    ax.legend(loc='upper left')
 
     fig.savefig(path + '/article_and_text.svg')
 
@@ -54,7 +54,7 @@ def plot_application_speedup(path, dataset, data):
     ax.plot(x, y_articles, '-o', label='Article')
     ax.plot(x, y_text, '-o', label='Text')
 
-    ax.legend(loc='upper right')
+    ax.legend(loc='upper left')
 
     fig.savefig(path + '/application_speedup.svg')
 
@@ -79,7 +79,7 @@ def plot_computational_speedup(path, dataset, data):
     ax.plot(x, y_articles, '-o', label='Article')
     ax.plot(x, y_text, '-o', label='Text')
 
-    ax.legend(loc='upper right')
+    ax.legend(loc='upper left')
 
     fig.savefig(path + '/computational_speedup.svg')
 
@@ -104,7 +104,7 @@ def plot_efficiency(path, dataset, data):
     ax.plot(x, y_articles, '-o', label='Article')
     ax.plot(x, y_text, '-o', label='Text')
 
-    ax.legend(loc='upper right')
+    ax.legend(loc='upper left')
 
     fig.savefig(path + '/efficiency.svg')
 
@@ -124,7 +124,7 @@ def plot_runtime_text_cutoffs(path, dataset, data, cutoffs, keys, workers):
 
     ax.plot(x, y_text_runtime, '-o', label='Runtime')
 
-    ax.legend(loc='upper right')
+    ax.legend(loc='upper left')
 
     fig.savefig(path + '/text_cutoffs_runtime.svg')
 
@@ -145,7 +145,7 @@ def plot_runtime_text_cutoffs(path, dataset, data, cutoffs, keys, workers):
 #     ax.plot(x, y_text_application_speedup, '-o', label='Application Speedup')
 #     # ax.plot(x, y_text_efficiency, '-o', label='Efficiency Speedup')
 #
-#     ax.legend(loc='upper right')
+#     ax.legend(loc='upper left')
 #
 #     fig.savefig(path + '/text_cutoffs_speedup.svg')
 #
@@ -165,7 +165,7 @@ def plot_runtime_text_cutoffs(path, dataset, data, cutoffs, keys, workers):
 #
 #     ax.plot(x, y_text_computational_speedup, '-o', label='Computational Speedup')
 #
-#     ax.legend(loc='upper right')
+#     ax.legend(loc='upper left')
 #
 #     fig.savefig(path + '/text_cutoffs_comp.svg')
 #
@@ -185,7 +185,7 @@ def plot_runtime_text_cutoffs(path, dataset, data, cutoffs, keys, workers):
 #
 #     ax.plot(x, y_text_efficiency, '-o', label='Efficiency Speedup')
 #
-#     ax.legend(loc='upper right')
+#     ax.legend(loc='upper left')
 #
 #     fig.savefig(path + '/text_cutoffs_efficiency.svg')
 #
@@ -204,7 +204,7 @@ def plot_runtime_article_cutoffs(path, dataset, data, cutoffs, keys, workers):
 
     ax.plot(x, y_text_runtime, '-o', label='Runtime')
 
-    ax.legend(loc='upper right')
+    ax.legend(loc='upper left')
 
     fig.savefig(path + '/article_cutoffs_runtime.svg')
 
@@ -225,7 +225,7 @@ def plot_runtime_article_cutoffs(path, dataset, data, cutoffs, keys, workers):
 #     ax.plot(x, y_text_application_speedup, '-o', label='Application Speedup')
 #     # ax.plot(x, y_text_efficiency, '-o', label='Efficiency Speedup')
 #
-#     ax.legend(loc='upper right')
+#     ax.legend(loc='upper left')
 #
 #     fig.savefig(path + '/article_cutoffs_speedup.svg')
 #
@@ -245,7 +245,7 @@ def plot_runtime_article_cutoffs(path, dataset, data, cutoffs, keys, workers):
 #
 #     ax.plot(x, y_text_computational_speedup, '-o', label='Computational Speedup')
 #
-#     ax.legend(loc='upper right')
+#     ax.legend(loc='upper left')
 #
 #     fig.savefig(path + '/article_cutoffs_comp.svg')
 #
@@ -265,7 +265,7 @@ def plot_runtime_article_cutoffs(path, dataset, data, cutoffs, keys, workers):
 #
 #     ax.plot(x, y_text_efficiency, '-o', label='Efficiency Speedup')
 #
-#     ax.legend(loc='upper right')
+#     ax.legend(loc='upper left')
 #
 #     fig.savefig(path + '/article_cutoffs_efficiency.svg')
 #
@@ -284,7 +284,7 @@ def plot_computational_speedup_article_cutoffs(path, dataset, data, cutoffs, key
 
     ax.plot(x, y_text_runtime, '-o', label='Computational')
 
-    ax.legend(loc='upper right')
+    ax.legend(loc='upper left')
 
     fig.savefig(path + '/article_cutoffs_computational_speedup.svg')
 
@@ -303,7 +303,7 @@ def plot_application_speedup_article_cutoffs(path, dataset, data, cutoffs, keys,
 
     ax.plot(x, y_text_runtime, '-o', label='Application')
 
-    ax.legend(loc='upper right')
+    ax.legend(loc='upper left')
 
     fig.savefig(path + '/article_cutoffs_application_speedup.svg')
 
@@ -323,7 +323,7 @@ def plot_computational_speedup_text_cutoffs(path, dataset, data, cutoffs, keys, 
 
     ax.plot(x, y_text_runtime, '-o', label='Computational')
 
-    ax.legend(loc='upper right')
+    ax.legend(loc='upper left')
 
     fig.savefig(path + '/text_cutoffs_computational_speedup.svg')
 
@@ -342,7 +342,7 @@ def plot_application_speedup_text_cutoffs(path, dataset, data, cutoffs, keys, wo
 
     ax.plot(x, y_text_runtime, '-o', label='Application')
 
-    ax.legend(loc='upper right')
+    ax.legend(loc='upper left')
 
     fig.savefig(path + '/text_cutoffs_application_speedup.svg')
 

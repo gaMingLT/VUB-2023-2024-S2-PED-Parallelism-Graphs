@@ -163,14 +163,14 @@ if __name__ == '__main__':
     if not os.path.exists(path):
         os.mkdir(path)
 
-    # analyse_all_around("firefly", data_all_around)
+    analyse_all_around("firefly", data_all_around)
 
-    # # 128 Workers
-    # data_128['SEQ'] = data_all_around['SEQ']
-    # data_128['TEXT1'] = data_all_around['TEXT1']
-    # data_128['ARTICLE1'] = data_all_around['ARTICLE1']
-    #
-    # analyze_128("firefly", data_128)
+    # 128 Workers
+    data_128['SEQ'] = data_all_around['SEQ']
+    data_128['TEXT1'] = data_all_around['TEXT1']
+    data_128['ARTICLE1'] = data_all_around['ARTICLE1']
+
+    analyze_128("firefly", data_128)
 
     # # 64 Workers
     # data_64['SEQ'] = data_all_around['SEQ']
@@ -179,9 +179,9 @@ if __name__ == '__main__':
     #
     # analyze_64("firefly", data_64)
 
-    # 32 Workers
-    data_32['SEQ'] = data_all_around['SEQ']
-    data_32['TEXT1'] = data_all_around['TEXT1']
-    data_32['ARTICLE1'] = data_all_around['ARTICLE1']
-
-    analyze_32("firefly", data_32)
+    # # 32 Workers
+    # data_32['SEQ'] = data_all_around['SEQ']
+    # data_32['TEXT1'] = data_all_around['TEXT1']
+    # data_32['ARTICLE1'] = data_all_around['ARTICLE1']
+    #
+    # analyze_32("firefly", data_32)
