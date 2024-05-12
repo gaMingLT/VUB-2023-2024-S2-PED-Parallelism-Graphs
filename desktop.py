@@ -20,34 +20,38 @@ def analyse_dataset_desktop(dataset, data):
     if not os.path.exists(path):
         os.mkdir(path)
 
-    mean = get_mean(data)
-    scaled = scale_data(mean)
+    dataset_parameters = get_dataset_parameters(data)
+    scaled = scale_data(dataset_parameters)
+    data = scaled
 
-    plot_articles_and_text(path, dataset, scaled)
+    overhead_data = overhead(data)
+    print_overhead(path, dataset, overhead_data)
 
-    # Application Speedup
-    data = application_speedup(scaled)
-    plot_application_speedup(path, dataset, data)
+    plot_articles_and_text(path, dataset, data)
 
-    # Computational Speedup
-    data = computational_speedup(data)
-    plot_computational_speedup(path, dataset, data)
-
-    # Efficiency
-    data = efficiency(data)
-    plot_efficiency(path, dataset, data)
-
-    # The following plots are for different cutoffs of the text
-    plot_runtime_text_cutoffs(path, dataset, data)
-    plot_application_speedup_text_cutoffs(path, dataset, data)
-    plot_computational_speedup_text_cutoffs(path, dataset, data)
-    plot_efficiency_speedup_text_cutoffs(path, dataset, data)
-
-    # The following plots are for different cutoffs of the text
-    plot_runtime_article_cutoffs(path, dataset, data)
-    plot_application_speedup_article_cutoffs(path, dataset, data)
-    plot_computational_speedup_article_cutoffs(path, dataset, data)
-    plot_efficiency_speedup_article_cutoffs(path, dataset, data)
+    # # Application Speedup
+    # data = application_speedup(scaled)
+    # plot_application_speedup(path, dataset, data)
+    #
+    # # Computational Speedup
+    # data = computational_speedup(data)
+    # plot_computational_speedup(path, dataset, data)
+    #
+    # # Efficiency
+    # data = efficiency(data)
+    # plot_efficiency(path, dataset, data)
+    #
+    # # The following plots are for different cutoffs of the text
+    # plot_runtime_text_cutoffs(path, dataset, data)
+    # plot_application_speedup_text_cutoffs(path, dataset, data)
+    # plot_computational_speedup_text_cutoffs(path, dataset, data)
+    # plot_efficiency_speedup_text_cutoffs(path, dataset, data)
+    #
+    # # The following plots are for different cutoffs of the text
+    # plot_runtime_article_cutoffs(path, dataset, data)
+    # plot_application_speedup_article_cutoffs(path, dataset, data)
+    # plot_computational_speedup_article_cutoffs(path, dataset, data)
+    # plot_efficiency_speedup_article_cutoffs(path, dataset, data)
 
 
 if __name__ == '__main__':

@@ -23,11 +23,11 @@ def load_data_from_files():
 
 
 def analyse_all_around(dataset, data):
-    mean = get_mean(data)
+    mean = get_dataset_parameters(data)
     scaled = scale_data(mean)
 
     overhead_data = overhead(data)
-    plot_overhead(path, dataset, overhead_data)
+    print_overhead(path, dataset, overhead_data)
 
     plot_articles_and_text(path, dataset, scaled)
 
@@ -51,7 +51,7 @@ def analyze_128(dataset, data):
     if not os.path.exists(path):
         os.mkdir(path)
 
-    mean = get_mean(data)
+    mean = get_dataset_parameters(data)
     scaled = scale_data(mean)
 
     # Application Speedup
@@ -88,7 +88,7 @@ def analyze_64(dataset, data):
     if not os.path.exists(path):
         os.mkdir(path)
 
-    mean = get_mean(data)
+    mean = get_dataset_parameters(data)
     scaled = scale_data(mean)
 
     # Application Speedup
@@ -125,7 +125,7 @@ def analyze_32(dataset, data):
     if not os.path.exists(path):
         os.mkdir(path)
 
-    mean = get_mean(data)
+    mean = get_dataset_parameters(data)
     scaled = scale_data(mean)
 
     # Application Speedup
