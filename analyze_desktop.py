@@ -466,6 +466,7 @@ def plot_tresholds_article_and_text_overhead(path, dataset, data):
 
 def plot_tresholds_article_and_text_overhead_combined(path, datasets, dataset_values):
     x = [500, 750, 1000, 2500, 5000]  # cutoff
+    SOURCE = "original"
 
     fig, ax = plt.subplots()
 
@@ -520,7 +521,7 @@ def plot_articles_and_text_application_combined(path, datasets, dataset_values):
     ax.set_xlabel("Text & Articles Sequentially")
     ax.set_ylabel("Application Speedup")
 
-    ax.legend(loc='upper right')
+    ax.legend(loc='best')
 
     fig.savefig(path + '/article_and_text_cutoffs_app.svg')
 
@@ -552,7 +553,7 @@ def plot_articles_and_text_computational_combined(path, datasets, dataset_values
     ax.set_xlabel("Text & Articles Sequentially")
     ax.set_ylabel("Computational Speedup")
 
-    ax.legend(loc='upper right')
+    ax.legend(loc='best')
 
     fig.savefig(path + '/article_and_text_cutoffs_comp.svg')
 
