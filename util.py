@@ -23,6 +23,8 @@ def scale_data(data):
         lower_bound = data[value]['original']['lower_bound'] / divide
         upper_bound = data[value]['original']['upper_bound'] / divide
 
+        data[value] = {'scaled': {}, 'original': data[value]['original']}
+
         data[value]['scaled']['mean'] = mean
         data[value]['scaled']['std'] = std
         data[value]['scaled']['min'] = min_value
@@ -48,6 +50,14 @@ def scale_data(data):
 
 def get_dataset_parameters(data):
     for value in data:
+        # print("Value: " + value)
+
+        len_values = np.array(data[value]['original']['values']).size
+        if len_values != 15 or len_values == 35:
+            raise ValueError("Length of data is not in expected ranges" + str(len_values))
+        # print("Length: " + str(len_values))
+        # print("\n")
+
         value_data = data[value]['original']['values'][4:]  # discard the first 5 values
         mean = np.mean(value_data)
         min_value = np.min(value_data)
@@ -61,7 +71,8 @@ def get_dataset_parameters(data):
         margin_of_error = t_critical * (std / np.sqrt(n))
         lower_bound = mean - margin_of_error
         upper_bound = mean + margin_of_error
-        
+
+        data[value]['original']['without_warmups'] = value_data # replace the original data values with 5 less runs
         data[value]['original']['mean'] = mean
         data[value]['original']['min'] = min_value
         data[value]['original']['max'] = max_value
@@ -77,6 +88,11 @@ def get_dataset_parameters(data):
 def overhead(data):
     data["TEXT1"]["original"]["overhead"] = data["TEXT1"]["original"]["mean"] / data["SEQ"]["original"]["mean"]
     data["ARTICLE1"]["original"]["overhead"] = data["ARTICLE1"]["original"]["mean"] / data["SEQ"]["original"]["mean"]
+
+    to = data["SEQ"]["original"]["mean"]
+    for value in data:
+        if value != 'SEQ':
+            data[value]["original"]["overhead"] = data[value]["original"]["mean"] / to
 
     return data
 

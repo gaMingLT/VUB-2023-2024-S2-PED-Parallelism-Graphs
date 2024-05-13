@@ -48,6 +48,7 @@ def plot_application_speedup(path, dataset, data):
     fig, ax = plt.subplots()
     ax.set_title(dataset.upper() + " - Application Speedup")
     ax.set_xlabel("Workers")
+    ax.set_xlabel("Application Speedup")
 
     if not os.path.exists("desktop/graphs"):
         os.mkdir("desktop/graphs")
@@ -76,6 +77,7 @@ def plot_computational_speedup(path, dataset, data):
     fig, ax = plt.subplots()
     ax.set_title(dataset.upper() + " - Computational Speedup")
     ax.set_xlabel("Workers")
+    ax.set_xlabel("Computational Speedup")
 
     ax.plot(x, y_articles, '-o', label='Article')
     ax.plot(x, y_text, '-o', label='Text')
@@ -101,6 +103,7 @@ def plot_efficiency(path, dataset, data):
     fig, ax = plt.subplots()
     ax.set_title(dataset.upper() + " - Efficiency")
     ax.set_xlabel("Workers")
+    ax.set_xlabel("Efficiency")
 
     ax.plot(x, y_articles, '-o', label='Article')
     ax.plot(x, y_text, '-o', label='Text')
@@ -124,6 +127,7 @@ def plot_runtime_text_cutoffs(path, dataset, data, cutoffs, keys, workers):
     fig, ax = plt.subplots()
     ax.set_title(dataset.upper() + " - Text Cutoffs - " + str(workers))
     ax.set_xlabel("Characters Sequential")
+    ax.set_ylabel("Milliseconds")
 
     ax.plot(x, y_text_runtime, '-o', label='Runtime')
 
@@ -134,67 +138,6 @@ def plot_runtime_text_cutoffs(path, dataset, data, cutoffs, keys, workers):
     plt.show()
 
 
-# def plot_application_speedup_text_cutoffs(path, dataset, data):
-#     x = [1000, 2500, 5000]  # cutoff
-#
-#     y_text_application_speedup = [data["TEXT_1000_12"][SOURCE]["application_speedup"],
-#                                   data["TEXT_2500_12"][SOURCE]["application_speedup"],
-#                                   data["TEXT_5000_12"][SOURCE]["application_speedup"]]
-#
-#     fig, ax = plt.subplots()
-#     ax.set_title(dataset.upper() + " - Text Cutoffs - 12")
-#     ax.set_xlabel("Characters Sequential")
-#
-#     ax.plot(x, y_text_application_speedup, '-o', label='Application Speedup')
-#     # ax.plot(x, y_text_efficiency, '-o', label='Efficiency Speedup')
-#
-#     ax.legend(loc='upper left')
-#
-#     fig.savefig(path + '/text_cutoffs_speedup.svg')
-#
-#     plt.show()
-#
-#
-# def plot_computational_speedup_text_cutoffs(path, dataset, data):
-#     x = [1000, 2500, 5000]  # cutoff
-#
-#     y_text_computational_speedup = [data["TEXT_1000_12"][SOURCE]["computational_speedup"],
-#                                     data["TEXT_2500_12"][SOURCE]["computational_speedup"],
-#                                     data["TEXT_5000_12"][SOURCE]["computational_speedup"]]
-#
-#     fig, ax = plt.subplots()
-#     ax.set_title(dataset.upper() + " - Text Cutoffs - 12")
-#     ax.set_xlabel("Characters Sequential")
-#
-#     ax.plot(x, y_text_computational_speedup, '-o', label='Computational Speedup')
-#
-#     ax.legend(loc='upper left')
-#
-#     fig.savefig(path + '/text_cutoffs_comp.svg')
-#
-#     plt.show()
-#
-#
-# def plot_efficiency_speedup_text_cutoffs(path, dataset, data):
-#     x = [1000, 2500, 5000]  # cutoff
-#
-#     y_text_efficiency = [data["TEXT_1000_12"][SOURCE]["efficiency"],
-#                          data["TEXT_2500_12"][SOURCE]["efficiency"],
-#                          data["TEXT_5000_12"][SOURCE]["efficiency"]]
-#
-#     fig, ax = plt.subplots()
-#     ax.set_title(dataset.upper() + " - Text Cutoffs - 12")
-#     ax.set_xlabel("Characters Sequential")
-#
-#     ax.plot(x, y_text_efficiency, '-o', label='Efficiency Speedup')
-#
-#     ax.legend(loc='upper left')
-#
-#     fig.savefig(path + '/text_cutoffs_efficiency.svg')
-#
-#     plt.show()
-#
-#
 def plot_runtime_article_cutoffs(path, dataset, data, cutoffs, keys, workers):
     x = cutoffs
 
@@ -207,6 +150,7 @@ def plot_runtime_article_cutoffs(path, dataset, data, cutoffs, keys, workers):
     fig, ax = plt.subplots()
     ax.set_title(dataset.upper() + " - Article Cutoffs - " + str(workers))
     ax.set_xlabel("Articles Sequential")
+    ax.set_ylabel("Milliseconds")
 
     ax.plot(x, y_text_runtime, '-o', label='Runtime')
 
@@ -215,67 +159,6 @@ def plot_runtime_article_cutoffs(path, dataset, data, cutoffs, keys, workers):
     fig.savefig(path + '/article_cutoffs_runtime.svg')
 
     plt.show()
-
-
-# def plot_application_speedup_article_cutoffs(path, dataset, data):
-#     x = [1000, 2500, 5000]  # cutoff
-#
-#     y_text_application_speedup = [data["ARTICLE_1000_12"][SOURCE]["application_speedup"],
-#                                   data["ARTICLE_2500_12"][SOURCE]["application_speedup"],
-#                                   data["ARTICLE_5000_12"][SOURCE]["application_speedup"]]
-#
-#     fig, ax = plt.subplots()
-#     ax.set_title(dataset.upper() + " - Article Cutoffs - 12")
-#     ax.set_xlabel("Articles Sequential")
-#
-#     ax.plot(x, y_text_application_speedup, '-o', label='Application Speedup')
-#     # ax.plot(x, y_text_efficiency, '-o', label='Efficiency Speedup')
-#
-#     ax.legend(loc='upper left')
-#
-#     fig.savefig(path + '/article_cutoffs_speedup.svg')
-#
-#     plt.show()
-#
-#
-# def plot_computational_speedup_article_cutoffs(path, dataset, data):
-#     x = [1000, 2500, 5000]  # cutoff
-#
-#     y_text_computational_speedup = [data["ARTICLE_1000_12"][SOURCE]["computational_speedup"],
-#                                     data["ARTICLE_2500_12"][SOURCE]["computational_speedup"],
-#                                     data["ARTICLE_5000_12"][SOURCE]["computational_speedup"]]
-#
-#     fig, ax = plt.subplots()
-#     ax.set_title(dataset.upper() + " - Article Cutoffs - 12")
-#     ax.set_xlabel("Articles Sequential")
-#
-#     ax.plot(x, y_text_computational_speedup, '-o', label='Computational Speedup')
-#
-#     ax.legend(loc='upper left')
-#
-#     fig.savefig(path + '/article_cutoffs_comp.svg')
-#
-#     plt.show()
-#
-#
-# def plot_efficiency_speedup_article_cutoffs(path, dataset, data):
-#     x = [1000, 2500, 5000]  # cutoff
-#
-#     y_text_efficiency = [data["ARTICLE_1000_12"][SOURCE]["efficiency"],
-#                          data["ARTICLE_2500_12"][SOURCE]["efficiency"],
-#                          data["ARTICLE_5000_12"][SOURCE]["efficiency"]]
-#
-#     fig, ax = plt.subplots()
-#     ax.set_title(dataset.upper() + " - Article Cutoffs - 12")
-#     ax.set_xlabel("Articles Sequential")
-#
-#     ax.plot(x, y_text_efficiency, '-o', label='Efficiency Speedup')
-#
-#     ax.legend(loc='upper left')
-#
-#     fig.savefig(path + '/article_cutoffs_efficiency.svg')
-#
-#     plt.show()
 
 
 def plot_computational_speedup_article_cutoffs(path, dataset, data, cutoffs, keys, workers):
@@ -287,6 +170,7 @@ def plot_computational_speedup_article_cutoffs(path, dataset, data, cutoffs, key
     fig, ax = plt.subplots()
     ax.set_title(dataset.upper() + " - Article Cutoffs - " + str(workers))
     ax.set_xlabel("Articles Sequential")
+    ax.set_ylabel("Computational Speedup")
 
     ax.plot(x, y_text_runtime, '-o', label='Computational')
 
@@ -306,6 +190,7 @@ def plot_application_speedup_article_cutoffs(path, dataset, data, cutoffs, keys,
     fig, ax = plt.subplots()
     ax.set_title(dataset.upper() + " - Article Cutoffs - " + str(workers))
     ax.set_xlabel("Articles Sequential")
+    ax.set_ylabel("Application Speedup")
 
     ax.plot(x, y_text_runtime, '-o', label='Application')
 
@@ -326,6 +211,7 @@ def plot_computational_speedup_text_cutoffs(path, dataset, data, cutoffs, keys, 
     fig, ax = plt.subplots()
     ax.set_title(dataset.upper() + " - Text Cutoffs - " + str(workers))
     ax.set_xlabel("Characters Sequential")
+    ax.set_ylabel("Computational Speedup")
 
     ax.plot(x, y_text_runtime, '-o', label='Computational')
 
@@ -345,11 +231,43 @@ def plot_application_speedup_text_cutoffs(path, dataset, data, cutoffs, keys, wo
     fig, ax = plt.subplots()
     ax.set_title(dataset.upper() + " - Text Cutoffs - " + str(workers))
     ax.set_xlabel("Characters Sequential")
+    ax.set_ylabel("Computational Speedup")
 
     ax.plot(x, y_text_runtime, '-o', label='Application')
 
     ax.legend(loc='upper left')
 
     fig.savefig(path + '/text_cutoffs_application_speedup.svg')
+
+    plt.show()
+
+
+def plot_tresholds_article_and_text_overhead_combined(path, datasets, dataset_values):
+    x = [250, 500, 750, 1000, 2500, 5000]  # cutoff
+
+    fig, ax = plt.subplots()
+
+    for dataset in dataset_values:
+        dataset_object = datasets[dataset]
+        data = dataset_object['values']
+
+        y_articles = []
+        for key in dataset_object['article']:
+            y_articles.append(data[key][SOURCE]['overhead'])
+
+        y_text = []
+        for key in dataset_object['text']:
+            y_text.append(data[key][SOURCE]['overhead'])
+
+        ax.plot(x, y_articles, '--o', label='Article - ' + dataset.upper())
+        ax.plot(x, y_text, '-o', label='Text - ' + dataset.upper())
+
+    ax.set_title("Article & Text Cutoffs")
+    ax.set_xlabel("Text & Articles Sequentially")
+    ax.set_ylabel("Overhead")
+
+    ax.legend(loc='best')
+
+    fig.savefig(path + '/article_and_text_cutoffs_overhead.svg')
 
     plt.show()

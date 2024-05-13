@@ -6,7 +6,7 @@ SOURCE = "original"
 
 def print_overhead(path, dataset, data):
     print("Overhead {}".format(dataset))
-    print("Text: " + str(data["TEXT1"]["original"]['overhead']))
+    print("TEXT1: " + str(data["TEXT1"]["original"]['overhead']))
     print("ARTICLE1: " + str(data["ARTICLE1"]["original"]["overhead"]))
 
 
@@ -402,7 +402,7 @@ def plot_articles_and_text_combined(path, datasets, dataset_values):
     plt.show()
 
 
-def plot_tresholds_article_and_text(path, dataset, data):
+def plot_tresholds_article_and_text_runtime(path, dataset, data):
     x = [500, 750, 1000, 2500, 5000]  # cutoff
 
     SOURCE = "scaled"
@@ -434,97 +434,126 @@ def plot_tresholds_article_and_text(path, dataset, data):
     plt.show()
 
 
+def plot_tresholds_article_and_text_overhead(path, dataset, data):
+    x = [500, 750, 1000, 2500, 5000]  # cutoff
 
-
-# def plot_tresholds_articles_combined(path, datasets, dataset_values):
-#     x = [500, 750, 1000, 2500, 5000]  # cutoff
-#     SOURCE = "scaled"
-#     fig, ax = plt.subplots()
-#
-#     for dataset in dataset_values:
-#         data = datasets[dataset]
-#
-#         y_articles = [
-#             data["ARTICLE_500_12"][SOURCE]["mean"], data["ARTICLE_750_12"][SOURCE]["mean"],
-#             data["ARTICLE_1000_12"][SOURCE]["mean"], data["ARTICLE_2500_12"][SOURCE]["mean"],
-#             data["ARTICLE_5000_12"][SOURCE]["mean"]]
-#
-#         ax.plot(x, y_articles, '--o', label='Article - ' + dataset.upper())
-#
-#     ax.set_title("Combined" + " - Articles")
-#     ax.set_xlabel("Articles Sequential")
-#     ax.set_ylabel("Milliseconds")
-#
-#     ax.legend(loc='center left')
-#
-#     fig.savefig(path + '/article_cutoffs_runtime.svg')
-#
-#     plt.show()
-#
-#
-# def plot_tresholds_text_combined(path, datasets, dataset_values):
-#     x = [500, 750, 1000, 2500, 5000]  # cutoff
-#
-#     SOURCE = "scaled"
-#     fig, ax = plt.subplots()
-#
-#     for dataset in dataset_values:
-#         data = datasets[dataset]
-#
-#         y_text = [data["TEXT_500_12"][SOURCE]["mean"], data["TEXT_750_12"][SOURCE]["mean"],
-#                           data["TEXT_1000_12"][SOURCE]["mean"], data["TEXT_2500_12"][SOURCE]["mean"],
-#                           data["TEXT_5000_12"][SOURCE]["mean"]]
-#
-#         ax.plot(x, y_text, '-o', label='Text - ' + dataset.upper())
-#
-#     ax.set_title("Combined" + " - Text")
-#     ax.set_xlabel("Characters Sequentially")
-#     ax.set_ylabel("Milliseconds")
-#
-#     ax.legend(loc='center left')
-#
-#     fig.savefig(path + '/text_cutoffs_runtime.svg')
-#
-#     plt.show()
-
-
-def plot_amdahls_law_articles(path, dataset, data):
-    x = [4, 8, 12]  # cores
-
+    # SOURCE = "scaled"
     fig, ax = plt.subplots()
 
-    y_min = [data["ARTICLE4"][SOURCE]["application_speedup"], data["ARTICLE8"][SOURCE]["application_speedup"], data["ARTICLE12"][SOURCE]["application_speedup"]]
-    y_750 = [data["ARTICLE_750_4"][SOURCE]["application_speedup"], data["ARTICLE_750_8"][SOURCE]["application_speedup"], data["ARTICLE_750_12"][SOURCE]["application_speedup"]]
 
-    ax.plot(x, y_min, '-o', label='Article Min')
-    ax.plot(x, y_750, '-o', label='Article 750')
+    y_text = [data["TEXT_500_12"][SOURCE]["overhead"], data["TEXT_750_12"][SOURCE]["overhead"],
+              data["TEXT_1000_12"][SOURCE]["overhead"], data["TEXT_2500_12"][SOURCE]["overhead"],
+              data["TEXT_5000_12"][SOURCE]["overhead"]]
 
-    ax.set_title(dataset.upper() + " - Application Speedup")
-    ax.set_xlabel("Workers")
+    y_articles = [
+        data["ARTICLE_500_12"][SOURCE]["overhead"], data["ARTICLE_750_12"][SOURCE]["overhead"],
+        data["ARTICLE_1000_12"][SOURCE]["overhead"], data["ARTICLE_2500_12"][SOURCE]["overhead"],
+        data["ARTICLE_5000_12"][SOURCE]["overhead"]]
 
-    ax.legend(loc='upper left')
+    ax.plot(x, y_articles, '-o', label='Article')
+    ax.plot(x, y_text, '-o', label='Text')
 
-    fig.savefig(path + '/amdahls_law_article.svg')
+    ax.set_title(dataset.upper() + " - Overhead")
+    ax.set_xlabel("Text & Articles Sequentially")
+    ax.set_ylabel("Overhead")
+
+    ax.legend(loc='best')
+
+    fig.savefig(path + '/article_and_text_cutoffs_overhead.svg')
 
     plt.show()
 
 
-def plot_amdahls_law_text(path, dataset, data):
-    x = [4, 8, 12]  # cores
+def plot_tresholds_article_and_text_overhead_combined(path, datasets, dataset_values):
+    x = [500, 750, 1000, 2500, 5000]  # cutoff
 
     fig, ax = plt.subplots()
 
-    y_min = [data["TEXT4"][SOURCE]["application_speedup"], data["TEXT8"][SOURCE]["application_speedup"], data["TEXT12"][SOURCE]["application_speedup"]]
-    y_750 = [data["TEXT_2500_4"][SOURCE]["application_speedup"], data["TEXT_2500_8"][SOURCE]["application_speedup"], data["TEXT_2500_12"][SOURCE]["application_speedup"]]
+    for dataset in dataset_values:
+        data = datasets[dataset]
 
-    ax.plot(x, y_min, '-o', label='Text Min')
-    ax.plot(x, y_750, '-o', label='Text 750')
+        y_text = [data["TEXT_500_12"][SOURCE]["overhead"], data["TEXT_750_12"][SOURCE]["overhead"],
+                  data["TEXT_1000_12"][SOURCE]["overhead"], data["TEXT_2500_12"][SOURCE]["overhead"],
+                  data["TEXT_5000_12"][SOURCE]["overhead"]]
 
-    ax.set_title(dataset.upper() + " - Application Speedup")
-    ax.set_xlabel("Workers")
+        y_articles = [
+            data["ARTICLE_500_12"][SOURCE]["overhead"], data["ARTICLE_750_12"][SOURCE]["overhead"],
+            data["ARTICLE_1000_12"][SOURCE]["overhead"], data["ARTICLE_2500_12"][SOURCE]["overhead"],
+            data["ARTICLE_5000_12"][SOURCE]["overhead"]]
 
-    ax.legend(loc='upper left')
+        ax.plot(x, y_articles, '--o', label='Article - ' + dataset.upper())
+        ax.plot(x, y_text, '-o', label='Text - ' + dataset.upper())
 
-    fig.savefig(path + '/amdahls_law_text.svg')
+    ax.set_title("Article & Text Cutoffs")
+    ax.set_xlabel("Text & Articles Sequentially")
+    ax.set_ylabel("Overhead")
+
+    ax.legend(loc='best')
+
+    fig.savefig(path + '/article_and_text_cutoffs_overhead.svg')
+
+    plt.show()
+
+
+def plot_articles_and_text_application_combined(path, datasets, dataset_values):
+    x = [500, 750, 1000, 2500, 5000]  # cutoff
+    SOURCE = "original"
+
+    fig, ax = plt.subplots()
+
+    for dataset in dataset_values:
+        data = datasets[dataset]
+
+        y_text = [data["TEXT_500_12"][SOURCE]["application_speedup"], data["TEXT_750_12"][SOURCE]["application_speedup"],
+                  data["TEXT_1000_12"][SOURCE]["application_speedup"], data["TEXT_2500_12"][SOURCE]["application_speedup"],
+                  data["TEXT_5000_12"][SOURCE]["application_speedup"]]
+
+        y_articles = [
+            data["ARTICLE_500_12"][SOURCE]["application_speedup"], data["ARTICLE_750_12"][SOURCE]["application_speedup"],
+            data["ARTICLE_1000_12"][SOURCE]["application_speedup"], data["ARTICLE_2500_12"][SOURCE]["application_speedup"],
+            data["ARTICLE_5000_12"][SOURCE]["application_speedup"]]
+
+        ax.plot(x, y_articles, '--o', label='Article - ' + dataset.upper())
+        ax.plot(x, y_text, '-o', label='Text - ' + dataset.upper())
+
+    ax.set_title("Article & Text Cutoffs")
+    ax.set_xlabel("Text & Articles Sequentially")
+    ax.set_ylabel("Application Speedup")
+
+    ax.legend(loc='upper right')
+
+    fig.savefig(path + '/article_and_text_cutoffs_app.svg')
+
+    plt.show()
+
+
+def plot_articles_and_text_computational_combined(path, datasets, dataset_values):
+    x = [500, 750, 1000, 2500, 5000]  # cutoff
+    SOURCE = "original"
+
+    fig, ax = plt.subplots()
+
+    for dataset in dataset_values:
+        data = datasets[dataset]
+
+        y_text = [data["TEXT_500_12"][SOURCE]["computational_speedup"], data["TEXT_750_12"][SOURCE]["computational_speedup"],
+                  data["TEXT_1000_12"][SOURCE]["computational_speedup"], data["TEXT_2500_12"][SOURCE]["computational_speedup"],
+                  data["TEXT_5000_12"][SOURCE]["computational_speedup"]]
+
+        y_articles = [
+            data["ARTICLE_500_12"][SOURCE]["computational_speedup"], data["ARTICLE_750_12"][SOURCE]["computational_speedup"],
+            data["ARTICLE_1000_12"][SOURCE]["computational_speedup"], data["ARTICLE_2500_12"][SOURCE]["computational_speedup"],
+            data["ARTICLE_5000_12"][SOURCE]["computational_speedup"]]
+
+        ax.plot(x, y_articles, '--o', label='Article - ' + dataset.upper())
+        ax.plot(x, y_text, '-o', label='Text - ' + dataset.upper())
+
+    ax.set_title("Article & Text Cutoffs")
+    ax.set_xlabel("Text & Articles Sequentially")
+    ax.set_ylabel("Computational Speedup")
+
+    ax.legend(loc='upper right')
+
+    fig.savefig(path + '/article_and_text_cutoffs_comp.svg')
 
     plt.show()

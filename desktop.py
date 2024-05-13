@@ -55,7 +55,11 @@ def analyse_dataset_desktop(dataset, data):
 
     # plot_amdahls_law_articles(path, dataset, data)
     # plot_amdahls_law_text(path, dataset, data)
-    plot_tresholds_article_and_text(path, dataset, data)
+
+    plot_tresholds_article_and_text_runtime(path, dataset, data)
+
+    # plot_tresholds_computational(path, dataset, data)
+    # plot_tresholds_application(path, dataset, data)
 
     return data
 
@@ -72,8 +76,10 @@ def plot_combinations(large, larger):
 
     plot_articles_and_text_combined(path,{'large': large, 'larger': larger}, ['large', 'larger'])
 
-    # plot_tresholds_articles_combined(path,{'large': large, 'larger': larger}, ['large', 'larger'])
-    # plot_tresholds_text_combined(path,{'large': large, 'larger': larger}, ['large', 'larger'])
+    plot_articles_and_text_application_combined(path, {'large': large, 'larger': larger}, ['large', 'larger'])
+    plot_articles_and_text_computational_combined(path, {'large': large, 'larger': larger}, ['large', 'larger'])
+
+    plot_tresholds_article_and_text_overhead_combined(path, {'large': large, 'larger': larger}, ['large', 'larger'])
 
 
 if __name__ == '__main__':
