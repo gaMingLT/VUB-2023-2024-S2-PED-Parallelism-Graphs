@@ -5,12 +5,14 @@ import matplotlib.pyplot as plt
 SOURCE = "original"
 
 
+# DONE
 def print_overhead(path, dataset, data):
     print("Overhead {}".format(dataset))
     print("Text: " + str(data["TEXT1"]["original"]['overhead']))
     print("ARTICLE1: " + str(data["ARTICLE1"]["original"]["overhead"]))
 
 
+# DONE
 def plot_articles_and_text(path, dataset, data):
     x = [1, 16, 32, 64, 128]  # cores
     SOURCE = 'scaled'
@@ -36,6 +38,7 @@ def plot_articles_and_text(path, dataset, data):
     plt.show()
 
 
+# DONE
 def plot_application_speedup(path, dataset, data):
     x = [1, 16, 32, 64, 128]  # cores
     y_articles = [data["ARTICLE1"][SOURCE]["application_speedup"], data["ARTICLE16"][SOURCE]["application_speedup"],
@@ -63,6 +66,7 @@ def plot_application_speedup(path, dataset, data):
     plt.show()
 
 
+# DONE
 def plot_computational_speedup(path, dataset, data):
     x = [16, 32, 64, 128]  # cores
     y_articles = [data["ARTICLE16"][SOURCE]["computational_speedup"],
@@ -89,6 +93,7 @@ def plot_computational_speedup(path, dataset, data):
     plt.show()
 
 
+# DONE
 def plot_efficiency(path, dataset, data):
     x = [16, 32, 64, 128]  # cores
     y_articles = [data["ARTICLE16"][SOURCE]["efficiency"],
@@ -115,6 +120,7 @@ def plot_efficiency(path, dataset, data):
     plt.show()
 
 
+# DONE
 def plot_runtime_text_cutoffs(path, dataset, data, cutoffs, keys, workers):
     x = cutoffs
 
@@ -138,6 +144,7 @@ def plot_runtime_text_cutoffs(path, dataset, data, cutoffs, keys, workers):
     plt.show()
 
 
+# DONE
 def plot_runtime_article_cutoffs(path, dataset, data, cutoffs, keys, workers):
     x = cutoffs
 
@@ -161,6 +168,7 @@ def plot_runtime_article_cutoffs(path, dataset, data, cutoffs, keys, workers):
     plt.show()
 
 
+# DONE
 def plot_computational_speedup_article_cutoffs(path, dataset, data, cutoffs, keys, workers):
     x = cutoffs
     y_text_runtime = []
@@ -181,6 +189,7 @@ def plot_computational_speedup_article_cutoffs(path, dataset, data, cutoffs, key
     plt.show()
 
 
+# DONE
 def plot_application_speedup_article_cutoffs(path, dataset, data, cutoffs, keys, workers):
     x = cutoffs
     y_text_runtime = []
@@ -201,6 +210,7 @@ def plot_application_speedup_article_cutoffs(path, dataset, data, cutoffs, keys,
     plt.show()
 
 
+# DONE
 def plot_computational_speedup_text_cutoffs(path, dataset, data, cutoffs, keys, workers):
     x = cutoffs
 
@@ -222,6 +232,7 @@ def plot_computational_speedup_text_cutoffs(path, dataset, data, cutoffs, keys, 
     plt.show()
 
 
+# DONE
 def plot_application_speedup_text_cutoffs(path, dataset, data, cutoffs, keys, workers):
     x = cutoffs
     y_text_runtime = []
@@ -242,7 +253,8 @@ def plot_application_speedup_text_cutoffs(path, dataset, data, cutoffs, keys, wo
     plt.show()
 
 
-def plot_tresholds_article_and_text_overhead_combined(path, datasets, dataset_values):
+# DONE
+def plot_thresholds_article_and_text_overhead_combined(path, datasets, dataset_values):
     x = [250, 500, 750, 1000, 2500, 5000]  # cutoff
 
     fig, ax = plt.subplots()

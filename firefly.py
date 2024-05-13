@@ -203,7 +203,7 @@ def plot_combinations(data_128, data_64, data_32):
                                 'ARTICLE_5000_32']
                 }}
 
-    plot_tresholds_article_and_text_overhead_combined(path, datasets, ['128', '64', '32'])
+    plot_thresholds_article_and_text_overhead_combined(path, datasets, ['128', '64', '32'])
 
 
 if __name__ == '__main__':

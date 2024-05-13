@@ -4,12 +4,14 @@ import matplotlib.pyplot as plt
 SOURCE = "original"
 
 
+# DONE
 def print_overhead(path, dataset, data):
     print("Overhead {}".format(dataset))
     print("TEXT1: " + str(data["TEXT1"]["original"]['overhead']))
     print("ARTICLE1: " + str(data["ARTICLE1"]["original"]["overhead"]))
 
 
+# DONE
 def plot_articles(data):
     x = [1, 4, 8, 12]  # cores
     y = [data["ARTICLE1"][SOURCE]["mean"], data["ARTICLE4"][SOURCE]["mean"], data["ARTICLE8"][SOURCE]["mean"],
@@ -28,7 +30,7 @@ def plot_articles(data):
 
     plt.show()
 
-
+# DONE
 def plot_text(data):
     x = [1, 4, 8, 12]  # cores
     y = [data["TEXT1"][SOURCE]["mean"], data["TEXT4"][SOURCE]["mean"], data["TEXT8"][SOURCE]["mean"],
@@ -47,7 +49,7 @@ def plot_text(data):
 
     plt.show()
 
-
+# DONE
 def plot_articles_and_text(path, dataset,  data):
     x = [1, 4, 8, 12]  # cores
     SOURCE = "scaled"
@@ -71,6 +73,7 @@ def plot_articles_and_text(path, dataset,  data):
     plt.show()
 
 
+# DONE
 def plot_application_speedup(path, dataset, data):
     x = [1, 4, 8, 12]  # cores
     y_articles = [data["ARTICLE1"][SOURCE]["application_speedup"], data["ARTICLE4"][SOURCE]["application_speedup"],
@@ -95,6 +98,7 @@ def plot_application_speedup(path, dataset, data):
     plt.show()
 
 
+# DONE
 def plot_computational_speedup(path, dataset,  data):
     x = [4, 8, 12]  # cores
     y_articles = [data["ARTICLE4"][SOURCE]["computational_speedup"],
@@ -117,7 +121,7 @@ def plot_computational_speedup(path, dataset,  data):
 
     plt.show()
 
-
+# DONE
 def plot_efficiency(path, dataset, data):
     x = [4, 8, 12]  # cores
     y_articles = [data["ARTICLE4"][SOURCE]["efficiency"],
@@ -141,6 +145,7 @@ def plot_efficiency(path, dataset, data):
     plt.show()
 
 
+# DONE
 def plot_runtime_text_cutoffs(path, dataset, data):
     x = [500, 750, 1000, 2500, 5000]  # cutoff
     y_text_runtime = [data["TEXT_500_12"][SOURCE]["mean"], data["TEXT_750_12"][SOURCE]["mean"],
@@ -160,6 +165,7 @@ def plot_runtime_text_cutoffs(path, dataset, data):
     plt.show()
 
 
+# DONE
 def plot_application_speedup_text_cutoffs(path, dataset, data):
     x = [500, 750, 1000, 2500, 5000]  # cutoff
 
@@ -182,6 +188,7 @@ def plot_application_speedup_text_cutoffs(path, dataset, data):
     plt.show()
 
 
+# DONE
 def plot_computational_speedup_text_cutoffs(path, dataset, data):
     x = [500, 750, 1000, 2500, 5000]  # cutoff
 
@@ -204,6 +211,7 @@ def plot_computational_speedup_text_cutoffs(path, dataset, data):
     plt.show()
 
 
+# DONE
 def plot_efficiency_speedup_text_cutoffs(path, dataset, data):
     x = [500, 750, 1000, 2500, 5000]  # cutoff
 
@@ -227,6 +235,7 @@ def plot_efficiency_speedup_text_cutoffs(path, dataset, data):
     plt.show()
 
 
+# DONE
 def plot_runtime_article_cutoffs(path, dataset, data):
     x = [500, 750, 1000, 2500, 5000]  # cutoff
     y_text_runtime = [
@@ -247,6 +256,7 @@ def plot_runtime_article_cutoffs(path, dataset, data):
     plt.show()
 
 
+# DONE
 def plot_application_speedup_article_cutoffs(path, dataset, data):
     x = [500, 750, 1000, 2500, 5000]  # cutoff
 
@@ -271,6 +281,7 @@ def plot_application_speedup_article_cutoffs(path, dataset, data):
     plt.show()
 
 
+# DONE
 def plot_computational_speedup_article_cutoffs(path, dataset, data):
     x = [500, 750, 1000, 2500, 5000]  # cutoff
 
@@ -293,6 +304,7 @@ def plot_computational_speedup_article_cutoffs(path, dataset, data):
     plt.show()
 
 
+# DONE
 def plot_efficiency_speedup_article_cutoffs(path, dataset, data):
     x = [500, 750, 1000, 2500, 5000]  # cutoff
 
@@ -315,6 +327,7 @@ def plot_efficiency_speedup_article_cutoffs(path, dataset, data):
     plt.show()
 
 
+# DONE
 def plot_application_speedup_combined(path, datasets, dataset_values):
     x = [1, 4, 8, 12]  # cores
 
@@ -344,6 +357,7 @@ def plot_application_speedup_combined(path, datasets, dataset_values):
     plt.show()
 
 
+# DONE
 def plot_computational_speedup_combined(path, datasets, dataset_values):
     x = [4, 8, 12]  # cores
 
@@ -372,7 +386,7 @@ def plot_computational_speedup_combined(path, datasets, dataset_values):
 
     plt.show()
 
-
+# DONE
 def plot_articles_and_text_combined(path, datasets, dataset_values):
     x = [1, 4, 8, 12]  # cores
     SOURCE = "scaled"
@@ -402,7 +416,8 @@ def plot_articles_and_text_combined(path, datasets, dataset_values):
     plt.show()
 
 
-def plot_tresholds_article_and_text_runtime(path, dataset, data):
+# DONE
+def plot_thresholds_article_and_text_runtime(path, dataset, data):
     x = [500, 750, 1000, 2500, 5000]  # cutoff
 
     SOURCE = "scaled"
@@ -434,7 +449,8 @@ def plot_tresholds_article_and_text_runtime(path, dataset, data):
     plt.show()
 
 
-def plot_tresholds_article_and_text_overhead(path, dataset, data):
+# DONE
+def plot_thresholds_article_and_text_overhead(path, dataset, data):
     x = [500, 750, 1000, 2500, 5000]  # cutoff
 
     # SOURCE = "scaled"
@@ -464,7 +480,8 @@ def plot_tresholds_article_and_text_overhead(path, dataset, data):
     plt.show()
 
 
-def plot_tresholds_article_and_text_overhead_combined(path, datasets, dataset_values):
+# DONE
+def plot_thresholds_article_and_text_overhead_combined(path, datasets, dataset_values):
     x = [500, 750, 1000, 2500, 5000]  # cutoff
     SOURCE = "original"
 
@@ -496,6 +513,7 @@ def plot_tresholds_article_and_text_overhead_combined(path, datasets, dataset_va
     plt.show()
 
 
+# DONE
 def plot_articles_and_text_application_combined(path, datasets, dataset_values):
     x = [500, 750, 1000, 2500, 5000]  # cutoff
     SOURCE = "original"
@@ -528,6 +546,7 @@ def plot_articles_and_text_application_combined(path, datasets, dataset_values):
     plt.show()
 
 
+# DONE
 def plot_articles_and_text_computational_combined(path, datasets, dataset_values):
     x = [500, 750, 1000, 2500, 5000]  # cutoff
     SOURCE = "original"
