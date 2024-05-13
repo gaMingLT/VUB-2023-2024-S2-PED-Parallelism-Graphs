@@ -2,7 +2,7 @@ import time
 import os
 
 from analyse import util
-from analyse.desktop import application, computational, efficiency, overhead, runtime
+from analyse.desktop import application, computational, efficiency, overhead, runtime, general
 
 
 def load_data_from_files():
@@ -30,6 +30,9 @@ def analyse_dataset_desktop(dataset, data):
     overhead_data = util.overhead(data)
     overhead.print_overhead(path, dataset, overhead_data)
 
+    # Confidence Interval
+    general.plot_confidence_interval_for_keys(path, dataset, data)
+
     runtime.plot_articles_and_text(path, dataset, data)
 
     # Application Speedup
@@ -44,19 +47,19 @@ def analyse_dataset_desktop(dataset, data):
     data = util.efficiency(data)
     # plot_efficiency(path, dataset, data)
 
-    # The following plots are for different cutoffs of the text
-    runtime.plot_runtime_text_cutoffs(path, dataset, data)
-    application.plot_application_speedup_text_cutoffs(path, dataset, data)
-    computational.plot_computational_speedup_text_cutoffs(path, dataset, data)
-    efficiency.plot_efficiency_speedup_text_cutoffs(path, dataset, data)
+    # # The following plots are for different cutoffs of the text
+    # runtime.plot_runtime_text_cutoffs(path, dataset, data)
+    # application.plot_application_speedup_text_cutoffs(path, dataset, data)
+    # computational.plot_computational_speedup_text_cutoffs(path, dataset, data)
+    # efficiency.plot_efficiency_speedup_text_cutoffs(path, dataset, data)
 
-    # The following plots are for different cutoffs of the text
-    runtime.plot_runtime_article_cutoffs(path, dataset, data)
-    application.plot_application_speedup_article_cutoffs(path, dataset, data)
-    computational.plot_computational_speedup_article_cutoffs(path, dataset, data)
-    efficiency.plot_efficiency_speedup_article_cutoffs(path, dataset, data)
-
-    runtime.plot_thresholds_article_and_text_runtime(path, dataset, data)
+    # # The following plots are for different cutoffs of the text
+    # runtime.plot_runtime_article_cutoffs(path, dataset, data)
+    # application.plot_application_speedup_article_cutoffs(path, dataset, data)
+    # computational.plot_computational_speedup_article_cutoffs(path, dataset, data)
+    # efficiency.plot_efficiency_speedup_article_cutoffs(path, dataset, data)
+    #
+    # runtime.plot_thresholds_article_and_text_runtime(path, dataset, data)
 
     return data
 
@@ -81,6 +84,10 @@ def plot_combinations(large, larger):
 
 if __name__ == '__main__':
     large, larger = load_data_from_files()
+    path = "desktop/graphs/"
+
+    if not os.path.exists(path):
+        os.mkdir(path)
 
     data_large = analyse_dataset_desktop("large", large)
     time.sleep(2)  # so we don't get error when generating a lot of graphs
@@ -88,4 +95,4 @@ if __name__ == '__main__':
     data_larger = analyse_dataset_desktop("larger", larger)
     time.sleep(2)
 
-    plot_combinations(data_large, data_larger)
+    # plot_combinations(data_large, data_larger)

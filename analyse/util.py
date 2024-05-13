@@ -50,13 +50,10 @@ def scale_data(data):
 
 def get_dataset_parameters(data):
     for value in data:
-        # print("Value: " + value)
 
         len_values = np.array(data[value]['original']['values']).size
-        if len_values != 15 or len_values == 35:
-            raise ValueError("Length of data is not in expected ranges" + str(len_values))
-        # print("Length: " + str(len_values))
-        # print("\n")
+        if len_values != 15 and len_values != 35:
+            raise ValueError("Length of data is not in expected ranges: " + str(len_values))
 
         value_data = data[value]['original']['values'][4:]  # discard the first 5 values
         mean = np.mean(value_data)
@@ -72,7 +69,7 @@ def get_dataset_parameters(data):
         lower_bound = mean - margin_of_error
         upper_bound = mean + margin_of_error
 
-        data[value]['original']['without_warmups'] = value_data # replace the original data values with 5 less runs
+        data[value]['original']['without_warmups'] = value_data  # replace the original data values with 5 less runs
         data[value]['original']['mean'] = mean
         data[value]['original']['min'] = min_value
         data[value]['original']['max'] = max_value

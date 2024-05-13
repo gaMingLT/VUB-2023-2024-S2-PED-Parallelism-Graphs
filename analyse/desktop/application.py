@@ -24,10 +24,12 @@ def plot_application_speedup(path, dataset, data):
 
     plt.show()
 
+
 def plot_application_speedup_text_cutoffs(path, dataset, data):
     x = [500, 750, 1000, 2500, 5000]  # cutoff
 
-    y_text_application_speedup = [data["TEXT_500_12"][SOURCE]["application_speedup"], data["TEXT_750_12"][SOURCE]["application_speedup"],
+    y_text_application_speedup = [data["TEXT_500_12"][SOURCE]["application_speedup"],
+                                  data["TEXT_750_12"][SOURCE]["application_speedup"],
                                   data["TEXT_1000_12"][SOURCE]["application_speedup"],
                                   data["TEXT_2500_12"][SOURCE]["application_speedup"],
                                   data["TEXT_5000_12"][SOURCE]["application_speedup"]]
@@ -35,11 +37,11 @@ def plot_application_speedup_text_cutoffs(path, dataset, data):
     fig, ax = plt.subplots()
     ax.set_title(dataset.upper() + " - Text Cutoffs - 12")
     ax.set_xlabel("Characters Sequential")
+    ax.set_ylabel("Application Speedup")
 
     ax.plot(x, y_text_application_speedup, '-o', label='Application Speedup')
-    # ax.plot(x, y_text_efficiency, '-o', label='Efficiency Speedup')
 
-    ax.legend(loc='upper left')
+    ax.legend(loc='best')
 
     fig.savefig(path + '/text_cutoffs_speedup.svg')
 
@@ -50,8 +52,8 @@ def plot_application_speedup_article_cutoffs(path, dataset, data):
     x = [500, 750, 1000, 2500, 5000]  # cutoff
 
     y_text_application_speedup = [
-
-        data["ARTICLE_500_12"][SOURCE]["application_speedup"], data["ARTICLE_750_12"][SOURCE]["application_speedup"],
+        data["ARTICLE_500_12"][SOURCE]["application_speedup"],
+        data["ARTICLE_750_12"][SOURCE]["application_speedup"],
         data["ARTICLE_1000_12"][SOURCE]["application_speedup"],
         data["ARTICLE_2500_12"][SOURCE]["application_speedup"],
         data["ARTICLE_5000_12"][SOURCE]["application_speedup"]]
@@ -59,6 +61,7 @@ def plot_application_speedup_article_cutoffs(path, dataset, data):
     fig, ax = plt.subplots()
     ax.set_title(dataset.upper() + " - Article Cutoffs - 12")
     ax.set_xlabel("Articles Sequential")
+    ax.set_xlabel("Application Speedup")
 
     ax.plot(x, y_text_application_speedup, '-o', label='Application Speedup')
 
@@ -85,10 +88,11 @@ def plot_application_speedup_combined(path, datasets, dataset_values):
         ax.plot(x, y_articles, '--o', label='Article - ' + dataset.upper())
         ax.plot(x, y_text, '-o', label='Text - ' + dataset.upper())
 
-    ax.set_title("Combined" + " - Application Speedup")
+    ax.set_title("Articles & Text: Application Speedup")
     ax.set_xlabel("Workers")
+    ax.set_ylabel("Application Speedup")
 
-    ax.legend(loc='upper left')
+    ax.legend(loc='best')
 
     fig.savefig(path + '/application_speedup.svg')
 
@@ -116,7 +120,7 @@ def plot_articles_and_text_application_combined(path, datasets, dataset_values):
         ax.plot(x, y_articles, '--o', label='Article - ' + dataset.upper())
         ax.plot(x, y_text, '-o', label='Text - ' + dataset.upper())
 
-    ax.set_title("Article & Text Cutoffs")
+    ax.set_title("Article & Text Cutoffs - 12")
     ax.set_xlabel("Text & Articles Sequentially")
     ax.set_ylabel("Application Speedup")
 

@@ -15,6 +15,7 @@ def plot_efficiency(path, dataset, data):
     fig, ax = plt.subplots()
     ax.set_title(dataset.upper() + " - Efficiency")
     ax.set_xlabel("Workers")
+    ax.set_ylabel("Efficiency")
 
     ax.plot(x, y_articles, '-o', label='Article')
     ax.plot(x, y_text, '-o', label='Text')
@@ -39,10 +40,11 @@ def plot_efficiency_speedup_text_cutoffs(path, dataset, data):
     fig, ax = plt.subplots()
     ax.set_title(dataset.upper() + " - Text Cutoffs - 12")
     ax.set_xlabel("Characters Sequential")
+    ax.set_ylabel("Efficiency")
 
     ax.plot(x, y_text_efficiency, '-o', label='Efficiency Speedup')
 
-    ax.legend(loc='upper left')
+    ax.legend(loc='best')
 
     fig.savefig(path + '/text_cutoffs_efficiency.svg')
 
@@ -61,10 +63,11 @@ def plot_efficiency_speedup_article_cutoffs(path, dataset, data):
     fig, ax = plt.subplots()
     ax.set_title(dataset.upper() + " - Article Cutoffs - 12")
     ax.set_xlabel("Articles Sequential")
+    ax.set_ylabel("Efficiency")
 
     ax.plot(x, y_text_efficiency, '-o', label='Efficiency Speedup')
 
-    ax.legend(loc='upper left')
+    ax.legend(loc='best')
 
     fig.savefig(path + '/article_cutoffs_efficiency.svg')
 

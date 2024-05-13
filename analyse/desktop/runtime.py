@@ -2,37 +2,6 @@ import matplotlib.pyplot as plt
 
 SOURCE = "scaled"
 
-def plot_articles(data):
-    x = [1, 4, 8, 12]  # cores
-    y = [data["ARTICLE1"][SOURCE]["mean"], data["ARTICLE4"][SOURCE]["mean"], data["ARTICLE8"][SOURCE]["mean"],
-         data["ARTICLE12"][SOURCE]["mean"]]
-
-    fig, ax = plt.subplots()
-    ax.set_title("Article Statistics")
-
-    ax.plot(x, y, '-o', label='Articles')
-    ax.legend(loc='upper left')
-
-    fig.savefig('desktop/graphs/articles.svg')
-
-    plt.show()
-
-
-def plot_text(data):
-    x = [1, 4, 8, 12]  # cores
-    y = [data["TEXT1"][SOURCE]["mean"], data["TEXT4"][SOURCE]["mean"], data["TEXT8"][SOURCE]["mean"],
-         data["TEXT12"][SOURCE]["mean"]]
-
-    fig, ax = plt.subplots()
-    ax.set_title("Text Statistics")
-
-    ax.plot(x, y, '-o', label='Text')
-    ax.legend(loc='upper left')
-
-    fig.savefig('desktop/graphs/text.svg')
-
-    plt.show()
-
 
 def plot_articles_and_text(path, dataset,  data):
     x = [1, 4, 8, 12]  # cores
@@ -50,7 +19,7 @@ def plot_articles_and_text(path, dataset,  data):
     ax.plot(x, y_articles, '-o', label='Article')
     ax.plot(x, y_text, '-o', label='Text')
 
-    ax.legend(loc='upper right')
+    ax.legend(loc='best')
 
     fig.savefig(path + '/article_and_text.svg')
 
@@ -66,10 +35,11 @@ def plot_runtime_text_cutoffs(path, dataset, data):
     fig, ax = plt.subplots()
     ax.set_title(dataset.upper() + " - Text Cutoffs - 12")
     ax.set_xlabel("Characters Sequential")
+    ax.set_ylabel("Milliseconds")
 
     ax.plot(x, y_text_runtime, '-o', label='Runtime')
 
-    ax.legend(loc='upper left')
+    ax.legend(loc='best')
 
     fig.savefig(path + '/text_cutoffs_runtime.svg')
 
@@ -86,6 +56,7 @@ def plot_runtime_article_cutoffs(path, dataset, data):
     fig, ax = plt.subplots()
     ax.set_title(dataset.upper() + " - Article Cutoffs - 12")
     ax.set_xlabel("Articles Sequential")
+    ax.set_ylabel("Milliseconds")
 
     ax.plot(x, y_text_runtime, '-o', label='Runtime')
 
@@ -117,7 +88,7 @@ def plot_articles_and_text_combined(path, datasets, dataset_values):
     ax.set_xlabel("Workers")
     ax.set_ylabel("Milliseconds")
 
-    ax.legend(loc='upper right')
+    ax.legend(loc='best')
 
     fig.savefig(path + '/article_and_text.svg')
 

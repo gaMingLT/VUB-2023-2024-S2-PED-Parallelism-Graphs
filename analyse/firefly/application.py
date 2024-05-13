@@ -22,7 +22,7 @@ def plot_application_speedup(path, dataset, data):
     ax.plot(x, y_articles, '-o', label='Article')
     ax.plot(x, y_text, '-o', label='Text')
 
-    ax.legend(loc='upper left')
+    ax.legend(loc='best')
 
     fig.savefig(path + '/application_speedup.svg')
 
@@ -42,7 +42,7 @@ def plot_application_speedup_article_cutoffs(path, dataset, data, cutoffs, keys,
 
     ax.plot(x, y_text_runtime, '-o', label='Application')
 
-    ax.legend(loc='upper left')
+    ax.legend(loc='best')
 
     fig.savefig(path + '/article_cutoffs_application_speedup.svg')
 
@@ -58,11 +58,11 @@ def plot_application_speedup_text_cutoffs(path, dataset, data, cutoffs, keys, wo
     fig, ax = plt.subplots()
     ax.set_title(dataset.upper() + " - Text Cutoffs - " + str(workers))
     ax.set_xlabel("Characters Sequential")
-    ax.set_ylabel("Computational Speedup")
+    ax.set_ylabel("Application Speedup")
 
     ax.plot(x, y_text_runtime, '-o', label='Application')
 
-    ax.legend(loc='upper left')
+    ax.legend(loc='best')
 
     fig.savefig(path + '/text_cutoffs_application_speedup.svg')
 

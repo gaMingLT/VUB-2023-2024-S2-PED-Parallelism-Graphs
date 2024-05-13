@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 
+
 def plot_efficiency(path, dataset, data):
     x = [16, 32, 64, 128]  # cores
     SOURCE = "original"

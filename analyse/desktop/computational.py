@@ -16,11 +16,12 @@ def plot_computational_speedup(path, dataset,  data):
     fig, ax = plt.subplots()
     ax.set_title(dataset.upper() + " - Computational Speedup")
     ax.set_xlabel("Workers")
+    ax.set_ylabel("Computational Speedup")
 
     ax.plot(x, y_articles, '-o', label='Article')
     ax.plot(x, y_text, '-o', label='Text')
 
-    ax.legend(loc='upper left')
+    ax.legend(loc='best')
 
     fig.savefig(path + '/computational_speedup.svg')
 
@@ -39,10 +40,11 @@ def plot_computational_speedup_text_cutoffs(path, dataset, data):
     fig, ax = plt.subplots()
     ax.set_title(dataset.upper() + " - Text Cutoffs - 12")
     ax.set_xlabel("Characters Sequential")
+    ax.set_ylabel("Computational Speedup")
 
     ax.plot(x, y_text_computational_speedup, '-o', label='Computational Speedup')
 
-    ax.legend(loc='upper left')
+    ax.legend(loc='best')
 
     fig.savefig(path + '/text_cutoffs_comp.svg')
 
@@ -102,8 +104,9 @@ def plot_computational_speedup_combined(path, datasets, dataset_values):
 
     ax.set_title("Combined" + " - Computational Speedup")
     ax.set_xlabel("Workers")
+    ax.set_ylabel("Computational Speedup")
 
-    ax.legend(loc='upper left')
+    ax.legend(loc='best')
 
     fig.savefig(path + '/computational_speedup.svg')
 
@@ -122,10 +125,11 @@ def plot_computational_speedup_article_cutoffs(path, dataset, data):
     fig, ax = plt.subplots()
     ax.set_title(dataset.upper() + " - Article Cutoffs - 12")
     ax.set_xlabel("Articles Sequential")
+    ax.set_ylabel("Computational Speedup")
 
     ax.plot(x, y_text_computational_speedup, '-o', label='Computational Speedup')
 
-    ax.legend(loc='upper left')
+    ax.legend(loc='best')
 
     fig.savefig(path + '/article_cutoffs_comp.svg')
 

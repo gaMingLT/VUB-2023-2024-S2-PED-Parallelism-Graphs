@@ -21,7 +21,7 @@ def plot_articles_and_text(path, dataset, data):
     ax.plot(x, y_articles, '-o', label='Article')
     ax.plot(x, y_text, '-o', label='Text')
 
-    ax.legend(loc='upper right')
+    ax.legend(loc='best')
 
     fig.savefig(path + '/article_and_text.svg')
 
@@ -42,7 +42,7 @@ def plot_runtime_text_cutoffs(path, dataset, data, cutoffs, keys, workers):
 
     ax.plot(x, y_text_runtime, '-o', label='Runtime')
 
-    ax.legend(loc='upper left')
+    ax.legend(loc='best')
 
     fig.savefig(path + '/text_cutoffs_runtime.svg')
 
@@ -63,7 +63,7 @@ def plot_runtime_article_cutoffs(path, dataset, data, cutoffs, keys, workers):
 
     ax.plot(x, y_text_runtime, '-o', label='Runtime')
 
-    ax.legend(loc='upper left')
+    ax.legend(loc='best')
 
     fig.savefig(path + '/article_cutoffs_runtime.svg')
 
