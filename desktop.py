@@ -31,7 +31,8 @@ def analyse_dataset_desktop(dataset, data):
     overhead.print_overhead(path, dataset, overhead_data)
 
     # Confidence Interval
-    general.plot_confidence_interval_for_keys(path, dataset, data)
+    general.plot_confidence_interval_for_articles(path, dataset, data)
+    general.plot_confidence_interval_for_text(path, dataset, data)
 
     runtime.plot_articles_and_text(path, dataset, data)
 
@@ -95,4 +96,4 @@ if __name__ == '__main__':
     data_larger = analyse_dataset_desktop("larger", larger)
     time.sleep(2)
 
-    plot_combinations(data_large, data_larger)
+    # plot_combinations(data_large, data_larger)

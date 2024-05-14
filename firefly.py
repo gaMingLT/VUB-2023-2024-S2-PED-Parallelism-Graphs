@@ -3,7 +3,7 @@ import os
 
 
 from analyse import util
-from analyse.firefly import application, computational, efficiency, overhead, runtime
+from analyse.firefly import application, computational, efficiency, overhead, runtime, general
 
 
 def load_data_from_files():
@@ -29,8 +29,12 @@ def analyse_all_around(dataset, data):
     mean = util.get_dataset_parameters(data)
     scaled = util.scale_data(mean)
 
-    overhead_data = util.overhead(data)
-    overhead.print_overhead(path, dataset, overhead_data)
+    data = util.overhead(data)
+    overhead.print_overhead(path, dataset, data)
+
+    # Confidence Interval
+    general.plot_confidence_interval_for_articles(path, dataset, data)
+    general.plot_confidence_interval_for_text(path, dataset, data)
 
     runtime.plot_articles_and_text(path, dataset, scaled)
 
