@@ -3,7 +3,10 @@ import logging
 import numpy as np
 from scipy.stats import t
 
-divide = 1000000  # to milliseconds
+MILLISECONDS = 1000000
+SECONDS = 1000000000
+
+divide = SECONDS  # to value
 
 confidence_level = 0.95
 alpha = 1 - confidence_level

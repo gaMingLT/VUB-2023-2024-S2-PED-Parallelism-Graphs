@@ -27,7 +27,7 @@ def plot_thresholds_article_and_text_overhead(path, dataset, data):
     ax.plot(x, y_text, '-o', label='Text')
 
     ax.set_title(dataset.upper() + " - Overhead")
-    ax.set_xlabel("Text & Articles Sequentially")
+    ax.set_xlabel("# articles & # characters")
     ax.set_ylabel("Overhead")
 
     ax.legend(loc='best')
@@ -57,8 +57,8 @@ def plot_thresholds_article_and_text_overhead_combined(path, datasets, dataset_v
         ax.plot(x, y_articles, '--o', label='Article - ' + dataset.upper())
         ax.plot(x, y_text, '-o', label='Text - ' + dataset.upper())
 
-    ax.set_title("Article & Text Cutoffs")
-    ax.set_xlabel("Text & Articles Sequentially")
+    ax.set_title("Article & Text Cutoffs - 12")
+    ax.set_xlabel("# articles & # characters")
     ax.set_ylabel("Overhead")
 
     ax.legend(loc='best')

@@ -16,8 +16,8 @@ def plot_application_speedup(path, dataset, data):
 
     fig, ax = plt.subplots()
     ax.set_title(dataset.upper() + " - Application Speedup")
-    ax.set_xlabel("Workers")
-    ax.set_xlabel("Application Speedup")
+    ax.set_xlabel("# workers")
+    ax.set_ylabel("Application Speedup")
 
     ax.plot(x, y_articles, '-o', label='Article')
     ax.plot(x, y_text, '-o', label='Text')
@@ -37,7 +37,7 @@ def plot_application_speedup_article_cutoffs(path, dataset, data, cutoffs, keys,
 
     fig, ax = plt.subplots()
     ax.set_title(dataset.upper() + " - Article Cutoffs - " + str(workers))
-    ax.set_xlabel("Articles Sequential")
+    ax.set_xlabel("# articles")
     ax.set_ylabel("Application Speedup")
 
     ax.plot(x, y_text_runtime, '-o', label='Application')
@@ -57,7 +57,7 @@ def plot_application_speedup_text_cutoffs(path, dataset, data, cutoffs, keys, wo
 
     fig, ax = plt.subplots()
     ax.set_title(dataset.upper() + " - Text Cutoffs - " + str(workers))
-    ax.set_xlabel("Characters Sequential")
+    ax.set_xlabel("# characters")
     ax.set_ylabel("Application Speedup")
 
     ax.plot(x, y_text_runtime, '-o', label='Application')

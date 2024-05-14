@@ -78,6 +78,8 @@ def analyze_128(dataset, data):
     computational.plot_computational_speedup_text_cutoffs(path, dataset, data, text_cutoffs, text_keys, workers)
     application.plot_application_speedup_text_cutoffs(path, dataset, data, text_cutoffs, text_keys, workers)
 
+    time.sleep(1)
+
     article_cutoffs = [250, 500, 750, 1000, 2500, 5000]
     article_keys = ['ARTICLE_250_128', 'ARTICLE_500_128', 'ARTICLE_750_128', 'ARTICLE_1000_128', 'ARTICLE_2500_128',
                     'ARTICLE_5000_128']
@@ -119,6 +121,8 @@ def analyze_64(dataset, data):
     computational.plot_computational_speedup_text_cutoffs(path, dataset, data, text_cutoffs, text_keys, workers)
     application.plot_application_speedup_text_cutoffs(path, dataset, data, text_cutoffs, text_keys, workers)
 
+    time.sleep(1)
+
     article_cutoffs = [250, 500, 750, 1000, 2500, 5000]
     article_keys = ['ARTICLE_250_64', 'ARTICLE_500_64', 'ARTICLE_750_64', 'ARTICLE_1000_64', 'ARTICLE_2500_64',
                     'ARTICLE_5000_64']
@@ -159,6 +163,8 @@ def analyze_32(dataset, data):
     runtime.plot_runtime_text_cutoffs(path, dataset, data, text_cutoffs, text_keys, workers)
     computational.plot_computational_speedup_text_cutoffs(path, dataset, data, text_cutoffs, text_keys, workers)
     application.plot_application_speedup_text_cutoffs(path, dataset, data, text_cutoffs, text_keys, workers)
+
+    time.sleep(1)
 
     article_cutoffs = [250, 500, 750, 1000, 2500, 5000]
     article_keys = ['ARTICLE_250_32', 'ARTICLE_500_32', 'ARTICLE_750_32', 'ARTICLE_1000_32', 'ARTICLE_2500_32',
@@ -217,6 +223,7 @@ if __name__ == '__main__':
 
     analyse_all_around("firefly", data_all_around)
 
+    time.sleep(1)
 
     # 128 Workers
     data_128['SEQ'] = {'original': {'values': data_all_around['SEQ']['original']['values']}}
@@ -242,5 +249,7 @@ if __name__ == '__main__':
     data_32['ARTICLE1'] = {'original': {'values': data_all_around['ARTICLE1']['original']['values']}}
 
     data_32 = analyze_32("firefly", data_32)
+
+    time.sleep(1)
 
     plot_combinations(data_128, data_64, data_32)

@@ -2,6 +2,12 @@ import matplotlib.pyplot as plt
 
 SOURCE = "scaled"
 
+X_LABEL_ARTICLES = "# articles"
+X_LABEL_CHARACTERS = "# characters"
+X_LABEL_BOTH = "# articles & characters"
+X_LABEL_WORKERS = "# workers"
+Y_LABEL_SECONDS = "Seconds"
+
 
 def plot_articles_and_text(path, dataset, data):
     x = [1, 16, 32, 64, 128]  # cores
@@ -15,8 +21,8 @@ def plot_articles_and_text(path, dataset, data):
 
     fig, ax = plt.subplots()
     ax.set_title(dataset.upper() + " - Articles & Text")
-    ax.set_xlabel("Workers")
-    ax.set_ylabel("Milliseconds")
+    ax.set_xlabel(X_LABEL_WORKERS)
+    ax.set_ylabel(Y_LABEL_SECONDS)
 
     ax.plot(x, y_articles, '-o', label='Article')
     ax.plot(x, y_text, '-o', label='Text')
@@ -37,8 +43,8 @@ def plot_runtime_text_cutoffs(path, dataset, data, cutoffs, keys, workers):
 
     fig, ax = plt.subplots()
     ax.set_title(dataset.upper() + " - Text Cutoffs - " + str(workers))
-    ax.set_xlabel("Characters Sequential")
-    ax.set_ylabel("Milliseconds")
+    ax.set_xlabel(X_LABEL_CHARACTERS)
+    ax.set_ylabel(Y_LABEL_SECONDS)
 
     ax.plot(x, y_text_runtime, '-o', label='Runtime')
 
@@ -58,8 +64,8 @@ def plot_runtime_article_cutoffs(path, dataset, data, cutoffs, keys, workers):
 
     fig, ax = plt.subplots()
     ax.set_title(dataset.upper() + " - Article Cutoffs - " + str(workers))
-    ax.set_xlabel("Articles Sequential")
-    ax.set_ylabel("Milliseconds")
+    ax.set_xlabel(X_LABEL_ARTICLES)
+    ax.set_ylabel(Y_LABEL_SECONDS)
 
     ax.plot(x, y_text_runtime, '-o', label='Runtime')
 

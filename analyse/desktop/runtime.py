@@ -2,6 +2,12 @@ import matplotlib.pyplot as plt
 
 SOURCE = "scaled"
 
+X_LABEL_ARTICLES = "# articles"
+X_LABEL_CHARACTERS = "# characters"
+X_LABEL_BOTH = "# articles & characters"
+X_LABEL_WORKERS = "# workers"
+Y_LABEL_SECONDS = "Seconds"
+
 
 def plot_articles_and_text(path, dataset,  data):
     x = [1, 4, 8, 12]  # cores
@@ -13,8 +19,8 @@ def plot_articles_and_text(path, dataset,  data):
 
     fig, ax = plt.subplots()
     ax.set_title(dataset.upper() + " - Articles & Text")
-    ax.set_xlabel("Workers")
-    ax.set_ylabel("Milliseconds")
+    ax.set_xlabel(X_LABEL_WORKERS)
+    ax.set_ylabel(Y_LABEL_SECONDS)
 
     ax.plot(x, y_articles, '-o', label='Article')
     ax.plot(x, y_text, '-o', label='Text')
@@ -34,8 +40,8 @@ def plot_runtime_text_cutoffs(path, dataset, data):
 
     fig, ax = plt.subplots()
     ax.set_title(dataset.upper() + " - Text Cutoffs - 12")
-    ax.set_xlabel("Characters Sequential")
-    ax.set_ylabel("Milliseconds")
+    ax.set_xlabel(X_LABEL_CHARACTERS)
+    ax.set_ylabel(Y_LABEL_SECONDS)
 
     ax.plot(x, y_text_runtime, '-o', label='Runtime')
 
@@ -55,8 +61,8 @@ def plot_runtime_article_cutoffs(path, dataset, data):
 
     fig, ax = plt.subplots()
     ax.set_title(dataset.upper() + " - Article Cutoffs - 12")
-    ax.set_xlabel("Articles Sequential")
-    ax.set_ylabel("Milliseconds")
+    ax.set_xlabel(X_LABEL_ARTICLES)
+    ax.set_ylabel(Y_LABEL_SECONDS)
 
     ax.plot(x, y_text_runtime, '-o', label='Runtime')
 
@@ -84,9 +90,9 @@ def plot_articles_and_text_combined(path, datasets, dataset_values):
         ax.plot(x, y_articles, '--o', label='Article - ' + dataset.upper())
         ax.plot(x, y_text, '-o', label='Text - ' + dataset.upper())
 
-    ax.set_title("Combined" + " - Articles & Text")
-    ax.set_xlabel("Workers")
-    ax.set_ylabel("Milliseconds")
+    ax.set_title("Runtime - Articles & Text")
+    ax.set_xlabel(X_LABEL_WORKERS)
+    ax.set_ylabel(Y_LABEL_SECONDS)
 
     ax.legend(loc='best')
 
@@ -113,8 +119,8 @@ def plot_thresholds_article_and_text_runtime(path, dataset, data):
     ax.plot(x, y_text, '-o', label='Text')
 
     ax.set_title(dataset.upper() + " - Article & Text Cutoffs")
-    ax.set_xlabel("Text & Articles Sequentially")
-    ax.set_ylabel("Milliseconds")
+    ax.set_xlabel(X_LABEL_BOTH)
+    ax.set_ylabel(Y_LABEL_SECONDS)
 
     ax.legend(loc='best')
 

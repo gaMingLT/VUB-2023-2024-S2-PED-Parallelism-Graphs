@@ -95,4 +95,4 @@ if __name__ == '__main__':
     data_larger = analyse_dataset_desktop("larger", larger)
     time.sleep(2)
 
-    # plot_combinations(data_large, data_larger)
+    plot_combinations(data_large, data_larger)

@@ -18,8 +18,8 @@ def plot_computational_speedup(path, dataset, data):
 
     fig, ax = plt.subplots()
     ax.set_title(dataset.upper() + " - Computational Speedup")
-    ax.set_xlabel("Workers")
-    ax.set_xlabel("Computational Speedup")
+    ax.set_xlabel("# workers")
+    ax.set_ylabel("Computational Speedup")
 
     ax.plot(x, y_articles, '-o', label='Article')
     ax.plot(x, y_text, '-o', label='Text')
@@ -39,7 +39,7 @@ def plot_computational_speedup_article_cutoffs(path, dataset, data, cutoffs, key
 
     fig, ax = plt.subplots()
     ax.set_title(dataset.upper() + " - Article Cutoffs - " + str(workers))
-    ax.set_xlabel("Articles Sequential")
+    ax.set_xlabel("# articles")
     ax.set_ylabel("Computational Speedup")
 
     ax.plot(x, y_text_runtime, '-o', label='Computational')
@@ -60,7 +60,7 @@ def plot_computational_speedup_text_cutoffs(path, dataset, data, cutoffs, keys, 
 
     fig, ax = plt.subplots()
     ax.set_title(dataset.upper() + " - Text Cutoffs - " + str(workers))
-    ax.set_xlabel("Characters Sequential")
+    ax.set_xlabel("# characters")
     ax.set_ylabel("Computational Speedup")
 
     ax.plot(x, y_text_runtime, '-o', label='Computational')
@@ -83,7 +83,7 @@ def plot_computational_speedup_article_cutoffs2(path, dataset, data):
 
     fig, ax = plt.subplots()
     ax.set_title(dataset.upper() + " - Article Cutoffs - 12")
-    ax.set_xlabel("Articles Sequential")
+    ax.set_xlabel("# articles")
     ax.set_ylabel("Computational Speedup")
 
     ax.plot(x, y_text_computational_speedup, '-o', label='Computational Speedup')
@@ -115,7 +115,7 @@ def plot_computational_speedup_combined(path, datasets, dataset_values):
         ax.plot(x, y_text, '-o', label='Text - ' + dataset.upper())
 
     ax.set_title("Combined" + " - Computational Speedup")
-    ax.set_xlabel("Workers")
+    ax.set_xlabel("# workers")
     ax.set_ylabel("Computational Speedup")
 
     ax.legend(loc='best')
@@ -146,8 +146,8 @@ def plot_articles_and_text_computational_combined(path, datasets, dataset_values
         ax.plot(x, y_articles, '--o', label='Article - ' + dataset.upper())
         ax.plot(x, y_text, '-o', label='Text - ' + dataset.upper())
 
-    ax.set_title("Article & Text Cutoffs")
-    ax.set_xlabel("Text & Articles Sequentially")
+    ax.set_title("Articles & Text Cutoffs")
+    ax.set_xlabel("# articles & # characters")
     ax.set_ylabel("Computational Speedup")
 
     ax.legend(loc='best')

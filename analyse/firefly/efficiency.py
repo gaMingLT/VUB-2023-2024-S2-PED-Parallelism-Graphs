@@ -16,7 +16,7 @@ def plot_efficiency(path, dataset, data):
 
     fig, ax = plt.subplots()
     ax.set_title(dataset.upper() + " - Efficiency")
-    ax.set_xlabel("Workers")
+    ax.set_xlabel("# workers")
     ax.set_xlabel("Efficiency")
 
     ax.plot(x, y_articles, '-o', label='Article')

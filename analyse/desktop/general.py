@@ -23,7 +23,7 @@ def plot_confidence_interval_for_keys(path, dataset, data):
         upper_bound = data[key][SOURCE]['upper_bound']
         mean = data[key][SOURCE]['mean']
 
-        print(x, key, lower_bound, upper_bound, mean)
+        # print(x, key, lower_bound, upper_bound, mean)
 
         # plt.plot((lower_bound, upper_bound), (y, y), 'ro-', color='orange')
 
