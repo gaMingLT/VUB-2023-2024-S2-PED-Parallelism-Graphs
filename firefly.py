@@ -33,8 +33,10 @@ def analyse_all_around(dataset, data):
     overhead.print_overhead(path, dataset, data)
 
     # Confidence Interval
-    general.plot_confidence_interval_for_articles(path, dataset, data)
-    general.plot_confidence_interval_for_text(path, dataset, data)
+    # general.plot_confidence_interval_for_articles(path, dataset, data)
+    # general.plot_confidence_interval_for_text(path, dataset, data)
+    general.plot_confidence_interval_for_articles_between(path, dataset, data)
+    general.plot_confidence_interval_text_between(path, dataset, data)
 
     runtime.plot_articles_and_text(path, dataset, scaled)
 
@@ -168,7 +170,7 @@ def analyze_32(dataset, data):
     computational.plot_computational_speedup_text_cutoffs(path, dataset, data, text_cutoffs, text_keys, workers)
     application.plot_application_speedup_text_cutoffs(path, dataset, data, text_cutoffs, text_keys, workers)
 
-    time.sleep(1)
+    time.sleep(2)
 
     article_cutoffs = [250, 500, 750, 1000, 2500, 5000]
     article_keys = ['ARTICLE_250_32', 'ARTICLE_500_32', 'ARTICLE_750_32', 'ARTICLE_1000_32', 'ARTICLE_2500_32',

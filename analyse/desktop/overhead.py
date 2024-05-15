@@ -9,6 +9,32 @@ def print_overhead(path, dataset, data):
     print("ARTICLE1: " + str(data["ARTICLE1"]["original"]["overhead"]))
 
 
+def plot_overhead_combined(path, datasets, dataset_values):
+    x = ['SMALL', 'MEDIUM', 'LARGE', 'LARGER']  # cutoff
+
+    fig, ax = plt.subplots()
+
+    y_text = []
+    y_articles = []
+
+    for dataset in dataset_values:
+        data = datasets[dataset]
+
+        y_text.append(data['TEXT1'][SOURCE]['overhead'])
+        y_articles.append(data['ARTICLE1'][SOURCE]['overhead'])
+
+    ax.plot(x, y_articles, '--o', label='Article')
+    ax.plot(x, y_text, '-o', label='Text')
+
+    ax.set_title("Overhead - Datasets")
+    ax.set_xlabel("Categories")
+    ax.set_ylabel("Overhead")
+
+    ax.legend(loc='best')
+
+    fig.savefig(path + '/datasets_overhead.svg')
+
+
 def plot_thresholds_article_and_text_overhead(path, dataset, data):
     x = [500, 750, 1000, 2500, 5000]  # cutoff
 

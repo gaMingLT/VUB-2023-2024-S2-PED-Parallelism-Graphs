@@ -5,31 +5,81 @@ import numpy as np
 SOURCE = "scaled"
 
 
-def plot_confidence_interval_for_articles(path, dataset, data):
+def plot_confidence_interval_text_between(path, dataset, data):
+    keys = ['SEQ', 'TEXT1', 'TEXT4', 'TEXT8', 'TEXT12']
+
+    fig, ax = plt.subplots(layout='constrained')
+
+    plt.xticks(np.arange(len(keys)), keys)
+    x = np.arange(len(keys))
+
+    y_upper = []
+    y_lower = []
+    y_mean = []
+
+    for i, key in enumerate(keys):
+        mean = data[key][SOURCE]['mean']
+        lower_bound = data[key][SOURCE]['lower_bound']
+        upper_bound = data[key][SOURCE]['upper_bound']
+
+        y_mean.append(mean)
+        y_upper.append(upper_bound)
+        y_lower.append(lower_bound)
+
+    ax.plot(x, y_mean, '--o')
+    ax.fill_between(x, y_lower, y_upper, alpha=0.2)
+
+    ax.set_title(dataset.upper() + " - Confidence Intervals")
+    ax.set_xlabel("Categories")
+    ax.set_ylabel("Confidence Interval")
+
+    ax.legend(loc='best')
+
+    fig.savefig(path + '/confidence_interval_text_inbetween.svg')
+
+    plt.show()
+
+
+
+def plot_confidence_interval_for_articles_between(path, dataset, data):
     keys = ['SEQ', 'ARTICLE1', 'ARTICLE4', 'ARTICLE8', 'ARTICLE12']
 
     fig, ax = plt.subplots(layout='constrained')
 
-    # plt.yticks(np.arange(len(keys)), keys)
-    # y = np.arange(len(keys))
-    #
-    # x_upper = []
-    # x_lower = []
-    # x_mean = []
-    # x_error = []
-    #
-    # for i, key in enumerate(keys):
-    #     mean = data[key][SOURCE]['mean']
-    #     lower_bound = data[key][SOURCE]['lower_bound']
-    #     upper_bound = data[key][SOURCE]['upper_bound']
-    #     margin_of_error = data[key][SOURCE]['margin_of_error']
-    #
-    #     x_error.append(margin_of_error)
-    #     x_mean.append(mean)
-    #     x_upper.append(upper_bound)
-    #     x_lower.append(lower_bound)
-    #
-    # ax.barh(y, x_mean, xerr=x_error, ecolor='r', align='center', label='mean')
+    plt.xticks(np.arange(len(keys)), keys)
+    x = np.arange(len(keys))
+
+    y_upper = []
+    y_lower = []
+    y_mean = []
+
+    for i, key in enumerate(keys):
+        mean = data[key][SOURCE]['mean']
+        lower_bound = data[key][SOURCE]['lower_bound']
+        upper_bound = data[key][SOURCE]['upper_bound']
+
+        y_mean.append(mean)
+        y_upper.append(upper_bound)
+        y_lower.append(lower_bound)
+
+    ax.plot(x, y_mean, '--o')
+    ax.fill_between(x, y_lower, y_upper, alpha=0.2)
+
+    ax.set_title(dataset.upper() + " - Confidence Intervals")
+    ax.set_xlabel("Categories")
+    ax.set_ylabel("Confidence Interval")
+
+    ax.legend(loc='best')
+
+    fig.savefig(path + '/confidence_interval_articles_inbetween.svg')
+
+    plt.show()
+
+
+def plot_confidence_interval_for_articles(path, dataset, data):
+    keys = ['SEQ', 'ARTICLE1', 'ARTICLE4', 'ARTICLE8', 'ARTICLE12']
+
+    fig, ax = plt.subplots(layout='constrained')
 
     plt.xticks(np.arange(len(keys)), keys)
     x = np.arange(len(keys))
@@ -93,5 +143,82 @@ def plot_confidence_interval_for_text(path, dataset, data):
     ax.legend(loc='best')
 
     fig.savefig(path + '/confidence_interval_text.svg')
+
+    plt.show()
+
+
+def plot_confidence_interval_articles_combined_inbetween(path, datasets, dataset_values):
+    keys = ['SEQ', 'ARTICLE1', 'ARTICLE4', 'ARTICLE8', 'ARTICLE12']
+
+    fig, ax = plt.subplots(layout='constrained')
+
+    plt.xticks(np.arange(len(keys)), keys)
+    x = np.arange(len(keys))
+
+    for dataset in dataset_values:
+        data = datasets[dataset]
+
+        y_upper = []
+        y_lower = []
+        y_mean = []
+
+        for i, key in enumerate(keys):
+            mean = data[key][SOURCE]['mean']
+            lower_bound = data[key][SOURCE]['lower_bound']
+            upper_bound = data[key][SOURCE]['upper_bound']
+
+            y_mean.append(mean)
+            y_upper.append(upper_bound)
+            y_lower.append(lower_bound)
+
+        ax.plot(x, y_mean, '--o', label=dataset.upper())
+        ax.fill_between(x, y_lower, y_upper, alpha=0.5)
+
+    ax.set_title("Confidence Intervals")
+    ax.set_xlabel("Categories")
+    ax.set_ylabel("Confidence Interval")
+
+    ax.legend(loc='best')
+
+    fig.savefig(path + '/confidence_interval_articles_inbetween.svg')
+
+    plt.show()
+
+
+
+def plot_confidence_interval_text_combined_inbetween(path, datasets, dataset_values):
+    keys = ['SEQ', 'TEXT1', 'TEXT4', 'TEXT8', 'TEXT12']
+
+    fig, ax = plt.subplots(layout='constrained')
+
+    plt.xticks(np.arange(len(keys)), keys)
+    x = np.arange(len(keys))
+
+    for dataset in dataset_values:
+        data = datasets[dataset]
+
+        y_upper = []
+        y_lower = []
+        y_mean = []
+
+        for i, key in enumerate(keys):
+            mean = data[key][SOURCE]['mean']
+            lower_bound = data[key][SOURCE]['lower_bound']
+            upper_bound = data[key][SOURCE]['upper_bound']
+
+            y_mean.append(mean)
+            y_upper.append(upper_bound)
+            y_lower.append(lower_bound)
+
+        ax.plot(x, y_mean, '--o', label=dataset.upper())
+        ax.fill_between(x, y_lower, y_upper, alpha=0.5)
+
+    ax.set_title("Confidence Intervals")
+    ax.set_xlabel("Categories")
+    ax.set_ylabel("Confidence Interval")
+
+    ax.legend(loc='best')
+
+    fig.savefig(path + '/confidence_interval_text_inbetween.svg')
 
     plt.show()
